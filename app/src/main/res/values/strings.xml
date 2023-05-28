@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">E-Commerce-App-Pra-Final-Project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="keranjang_cart">Keranjang/Cart</string>
+    <string name="voucher">Voucher</string>
+    <string name="masukan_kode_vouchers">Masukan Kode Vouchers</string>
+    <string name="pakai">Pakai</string>
+    <string name="jumlah_pesanan">Jumlah Pesanan</string>
+    <string name="termasuk_ppn">(Termasuk PPn)</string>
+    <string name="total">Total</string>
+    <string name="proses_transaksi">Proses Transaksi</string>
 </resources>

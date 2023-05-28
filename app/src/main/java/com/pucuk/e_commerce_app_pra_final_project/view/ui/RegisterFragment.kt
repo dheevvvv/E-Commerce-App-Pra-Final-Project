@@ -9,14 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoopeeapplication.viewmodel.UserViewModel
+import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 class RegisterFragment : Fragment() {
-
-    private lateinit var binding: FragmentRegisterBinding
     private lateinit var userVM: UserViewModel
-
+    private lateinit var binding: FragmentRegisterBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,17 +38,17 @@ class RegisterFragment : Fragment() {
         val password = binding.edtPasswordRegister.text.toString()
         val passwordConfirm = binding.edtUlangiPassword.text.toString()
 
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
-            Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()
-        } else {
-            if (password == passwordConfirm) {
-                userVM.postUserRegister(username, email, password)
-                Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT)
-                    .show()
-                findNavController().navigate(R.id.action_registerFragment2_to_loginFragment2)
-            } else {
-                Toast.makeText(requireContext(), "Password not match", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
+//            Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()
+//        } else {
+//            if (password == passwordConfirm) {
+//                userVM.postUserRegister(username, email, password)
+//                Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT)
+//                    .show()
+//                findNavController().navigate(R.id.action_registerFragment2_to_loginFragment2)
+//            } else {
+//                Toast.makeText(requireContext(), "Password not match", Toast.LENGTH_SHORT).show()
+//            }
+//        }
     }
 }

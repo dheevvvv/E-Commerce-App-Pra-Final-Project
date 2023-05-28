@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/biru"
     android:padding="30dp"
-    tools:context=".view.LoginFragment"
+    tools:context=".view.ui.LoginFragment"
     tools:ignore="Overdraw">
 
     <androidx.cardview.widget.CardView
