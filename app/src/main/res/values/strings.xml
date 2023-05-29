@@ -2,6 +2,30 @@
     <string name="app_name">E-Commerce-App-Pra-Final-Project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Choose Language  -->
+    <string name="choose_language">Choose Language</string>
+    <string name="english">English</string>
+    <string name="indonesian">Indodnesian</string>
+
+    <!--  Bottom Navigation  -->
+    <string name="home">Home</string>
+    <string name="news">News</string>
+    <string name="favorite">Favorite</string>
+    <string name="cart">Cart</string>
+    <string name="account">Account</string>
+
+    <!--  Login/Register Details  -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_account">Already Have Account?</string>
+    <string name="not_registered_yer">Not Registered Yet?</string>
+
+    <!--  Cart Detail  -->
     <string name="keranjang_cart">Keranjang/Cart</string>
     <string name="voucher">Voucher</string>
     <string name="masukan_kode_vouchers">Masukan Kode Vouchers</string>
