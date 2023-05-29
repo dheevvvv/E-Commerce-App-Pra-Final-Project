@@ -1,12 +1,18 @@
 <resources>
-    <string name="app_name">E-Commerce-App-Pra-Final-Project</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <!--  Choose Language  -->
     <string name="choose_language">Choose Language</string>
     <string name="english">English</string>
-    <string name="indonesian">Indodnesian</string>
+    <string name="indonesian">Indonesian</string>
+
+    <!--  Top App Bar  -->
+    <string name="product">Product</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="about_us">About Us</string>
+    <string name="help">Help</string>
+
+    <!--  Home  -->
+    <string name="search_category">Search Category</string>
+    <string name="product_popular">Product Popular</string>
 
     <!--  Bottom Navigation  -->
     <string name="home">Home</string>
@@ -15,7 +21,10 @@
     <string name="cart">Cart</string>
     <string name="account">Account</string>
 
-    <!--  Login/Register Details  -->
+    <!--  Another Detail  -->
+    <string name="coming_soon">Coming Soon</string>
+
+    <!--  Login/Register Detail  -->
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="username">Username</string>
@@ -26,18 +35,28 @@
     <string name="not_registered_yer">Not Registered Yet?</string>
 
     <!--  Cart Detail  -->
-    <string name="keranjang_cart">Keranjang/Cart</string>
     <string name="voucher">Voucher</string>
-    <string name="masukan_kode_vouchers">Masukan Kode Vouchers</string>
-    <string name="pakai">Pakai</string>
-    <string name="jumlah_pesanan">Jumlah Pesanan</string>
-    <string name="termasuk_ppn">(Termasuk PPn)</string>
-    <string name="total">Total</string>
-    <string name="proses_transaksi">Proses Transaksi</string>
-    <string name="nama_product">Nama Product</string>
-    <string name="category">Category</string>
-    <string name="jumlah">Jumlah :</string>
+    <string name="input_voucher_code">Input Voucher Code</string>
+    <string name="use">Use</string>
+    <string name="order_quantity">Jumlah Pesanan</string>
+    <string name="vat_include">(VAT Include)</string>
+    <string name="quantity">Quantity :</string>
     <string name="_1">1</string>
+    <string name="total">Total</string>
+    <string name="transaction_process">Transaction Process</string>
+
+
+    <!--  Product Detail  -->
+    <string name="product_name">Product Name</string>
+    <string name="category">Category</string>
+    <string name="product_price">Product Price</string>
+    <string name="product_return">Product Return</string>
+    <string name="product_free_return">30 Days Free Returns</string>
+    <string name="product_about">About Product</string>
+    <string name="product_description">About Description</string>
+    <string name="product_rate">Product Rate</string>
+    <string name="see_all_voucher">See All Voucher</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="put_in_cart">Put in Cart</string>
     <string name="wishlist">Wishlist</string>
-    <string name="pesan">Pesan</string>
 </resources>
