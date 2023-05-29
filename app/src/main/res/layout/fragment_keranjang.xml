@@ -8,13 +8,13 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:background="@color/black"
+        android:background="@color/maya_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_home"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -24,14 +24,14 @@
             tools:layout_editor_absoluteX="316dp"
             tools:layout_editor_absoluteY="10dp" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:text="@string/keranjang_cart"
+            android:text="@string/cart"
             tools:ignore="TextContrastCheck"
             tools:layout_editor_absoluteX="152dp"
             tools:layout_editor_absoluteY="11dp" />
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/voucher"
@@ -74,14 +74,14 @@
                 app:cardCornerRadius="10dp"
                 android:layout_margin="10dp"
                 android:elevation="100dp"
-                app:cardBackgroundColor="@color/light_grey"
+                app:cardBackgroundColor="@color/maya_blue"
                 >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="17dp"
@@ -94,9 +94,9 @@
                         android:layout_width="235dp"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:hint="@string/masukan_kode_vouchers"
+                        android:hint="@string/input_voucher_code"
                         app:boxBackgroundColor="@color/white"
-                        android:textColorHint="@color/medium_grey"
+                        android:textColorHint="@color/sonic_silver"
                         android:layout_margin="10dp">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -107,11 +107,11 @@
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pakai"
-                        android:backgroundTint="@color/black"/>
+                        android:text="@string/use"
+                        android:backgroundTint="@color/brilliant_azure"/>
 
                 </LinearLayout>
 
@@ -124,18 +124,18 @@
                 app:cardCornerRadius="10dp"
                 android:layout_margin="10dp"
                 android:elevation="100dp"
-                app:cardBackgroundColor="@color/light_grey">
+                app:cardBackgroundColor="@color/lotion">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_text_jumlahpesanan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/jumlah_pesanan"
+                        android:text="@string/order_quantity"
                         android:textSize="17sp"
                         android:textColor="@color/black"
                         android:layout_marginStart="10dp"
@@ -143,18 +143,18 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_subtotal_produk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Subtotal (? Produk)"
+                        android:text="@string/subtotal_product"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_text_jumlahpesanan"
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="10dp"
                         />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -164,29 +164,29 @@
                         app:layout_constraintStart_toEndOf="@+id/tv_subtotal_produk"
                         app:layout_constraintTop_toBottomOf="@id/tv_text_jumlahpesanan" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_text_potongan_voucher"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Potongan Vouchers"
+                        android:text="@string/voucher_discount"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_subtotal_produk"
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="10dp"
                         />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="- Rp. 50.000"
-                        android:textColor="@color/red"
+                        android:textColor="@color/persian_red"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.739"
                         app:layout_constraintStart_toEndOf="@+id/tv_text_potongan_voucher"
                         app:layout_constraintTop_toBottomOf="@id/tv_subtotal_produk" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_text_total_harga"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -199,18 +199,18 @@
                         android:layout_marginStart="10dp"
                         />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_termasukppn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
-                        android:text="@string/termasuk_ppn"
+                        android:text="@string/vat_include"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/tv_text_total_harga"
                         app:layout_constraintTop_toBottomOf="@id/tv_text_potongan_voucher" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
@@ -226,19 +226,15 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@string/proses_transaksi"
+                android:text="@string/transaction_process"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/black"
                 />
-
-
-
         </LinearLayout>
 
     </ScrollView>

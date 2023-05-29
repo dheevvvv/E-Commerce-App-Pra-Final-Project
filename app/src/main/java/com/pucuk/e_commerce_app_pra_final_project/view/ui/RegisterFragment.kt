@@ -33,10 +33,10 @@ class RegisterFragment : Fragment() {
     }
 
     private fun register() {
-        val username = binding.edtUsernameRegister.text.toString()
-        val email = binding.edtEmailRegister.text.toString()
-        val password = binding.edtPasswordRegister.text.toString()
-        val passwordConfirm = binding.edtUlangiPassword.text.toString()
+        val username = binding.etUsernameRegister.text.toString()
+        val email = binding.etEmailRegister.text.toString()
+        val password = binding.etPasswordRegister.text.toString()
+        val passwordConfirm = binding.etConfirmPasswordRegister.text.toString()
 
 //        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
 //            Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()

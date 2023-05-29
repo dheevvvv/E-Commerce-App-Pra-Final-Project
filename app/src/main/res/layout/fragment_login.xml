@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/biru"
+    android:background="@color/maya_blue"
     android:padding="30dp"
     tools:context=".view.ui.LoginFragment"
     tools:ignore="Overdraw">
@@ -26,21 +26,21 @@
             android:paddingBottom="30dp"
             tools:ignore="RtlHardcoded">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:layout_gravity="center"
                 android:layout_width="134dp"
                 android:layout_height="119dp"
-                android:src="@mipmap/logo_foreground"
+                android:src="@drawable/logo_foreground"
                 tools:ignore="ContentDescription" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/black"
-                android:text="Login"
+                android:text="@string/login"
                 android:textAlignment="center"
-                android:textColor="@color/biru"
+                android:textColor="@color/maya_blue"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
@@ -49,14 +49,14 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/black"
                 tools:ignore="HardcodedText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmailLogin"
+                    android:id="@+id/et_EmailLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
@@ -66,7 +66,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/black"
@@ -82,36 +82,45 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/biru"
-                android:text="Login"
+                android:backgroundTint="@color/maya_blue"
+                android:text="@string/login"
                 tools:ignore="DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck,HardcodedText,VisualLintButtonSize" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/black"
-                android:text="New User?"
+                android:text="@string/not_registered_yet"
                 android:textAlignment="center"
                 tools:ignore="HardcodedText" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvToRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"
-                android:text="Register Here"
+                android:text="@string/register"
                 android:textAlignment="center"
-                android:textColor="@color/biru"
+                android:textColor="@color/maya_blue"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_language"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

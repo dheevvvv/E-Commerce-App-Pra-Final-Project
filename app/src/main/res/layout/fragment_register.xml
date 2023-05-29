@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/biru"
+    android:background="@color/maya_blue"
     android:padding="30dp"
     tools:context=".view.ui.RegisterFragment"
     tools:ignore="Overdraw">
@@ -26,21 +26,21 @@
             android:paddingBottom="30dp"
             tools:ignore="RtlHardcoded">
 
-            <ImageView
-                android:layout_width="134dp"
-                android:layout_height="112dp"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="135dp"
+                android:layout_height="115dp"
                 android:layout_gravity="center"
                 android:src="@drawable/logo_foreground"
                 tools:ignore="ContentDescription" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/black"
-                android:text="Register"
+                android:text="@string/register"
                 android:textAlignment="center"
-                android:textColor="@color/biru"
+                android:textColor="@color/maya_blue"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
@@ -49,14 +49,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
+                android:hint="@string/username"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/black"
                 tools:ignore="HardcodedText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtUsernameRegister"
+                    android:id="@+id/et_UsernameRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
@@ -66,14 +66,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/black"
                 tools:ignore="HardcodedText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtEmailRegister"
+                    android:id="@+id/et_EmailRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
@@ -83,7 +83,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/black"
@@ -91,7 +91,7 @@
                 tools:ignore="HardcodedText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtPasswordRegister"
+                    android:id="@+id/et_PasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -102,7 +102,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ulangi Password"
+                android:hint="@string/confirm_password"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/black"
@@ -110,7 +110,7 @@
                 tools:ignore="HardcodedText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtUlangiPassword"
+                    android:id="@+id/et_ConfirmPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -118,33 +118,33 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/biru"
+                android:backgroundTint="@color/maya_blue"
                 android:textColor="@color/black"
                 android:textAllCaps="false"
-                android:text="Register"
+                android:text="@string/register"
                 tools:ignore="DuplicateSpeakableTextCheck,HardcodedText,VisualLintButtonSize" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/black"
-                android:text="Already Have Account?"
+                android:text="@string/already_have_account"
                 android:textAlignment="center"
                 tools:ignore="HardcodedText" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"
-                android:text="Login"
+                android:text="@string/login"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/maya_blue"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
