@@ -10,4 +10,8 @@
     <string name="termasuk_ppn">(Termasuk PPn)</string>
     <string name="total">Total</string>
     <string name="proses_transaksi">Proses Transaksi</string>
+    <string name="nama_product">Nama Product</string>
+    <string name="category">Category</string>
+    <string name="jumlah">Jumlah :</string>
+    <string name="_1">1</string>
 </resources>
