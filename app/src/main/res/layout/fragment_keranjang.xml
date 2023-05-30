@@ -20,9 +20,7 @@
             android:layout_height="30dp"
             android:layout_gravity="start"
             android:src="@drawable/ic_arrow_back"
-            tools:ignore="ImageContrastCheck"
-            tools:layout_editor_absoluteX="316dp"
-            tools:layout_editor_absoluteY="10dp" />
+            tools:ignore="ImageContrastCheck"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvHome"
@@ -33,8 +31,7 @@
             android:textSize="20sp"
             android:text="@string/cart"
             tools:ignore="TextContrastCheck"
-            tools:layout_editor_absoluteX="152dp"
-            tools:layout_editor_absoluteY="11dp" />
+            />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView

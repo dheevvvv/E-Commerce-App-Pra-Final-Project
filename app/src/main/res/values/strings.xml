@@ -13,6 +13,7 @@
     <string name="product_detail">Product Detail</string>
     <string name="about_us">About Us</string>
     <string name="help">Help</string>
+    <string name="back">Back</string>
 
     <!--  Home  -->
     <string name="search_category">Search Category</string>
