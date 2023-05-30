@@ -5,26 +5,24 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
+import com.bumptech.glide.Glide
 import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.ItemNewsBinding
-import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataDetailNewsItem
+import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
 
-class NewsAdapter(private val listNews: List<DataNewsResponseItem>) :
+class NewsAdapter(private var listNews: List<DataNewsResponseItem>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(newsItem: DataDetailNewsItem){
-            binding.tvNews.text = newsItem.title
+    class ViewHolder(var binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bindNews(itemNews: DataNewsResponseItem) {
+            binding.news = itemNews
             binding.cardView.setOnClickListener {
                 val bundle = Bundle().apply {
-                    putInt("ID", newsItem.idNews.toString().toInt())
+                    putInt("ID", itemNews.idNews.toString().toInt())
                 }
-                it.findNavController().navigate(R.id.action_newsFragment_to_detailNewsFragment, bundle)
+                it.findNavController().navigate(R.id.action_homeFragment_to_detailNewsFragment, bundle)
             }
-
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,12 +30,13 @@ class NewsAdapter(private val listNews: List<DataNewsResponseItem>) :
         return ViewHolder(view)
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bindNews(listNews[position])
+        Glide.with(holder.itemView).load(listNews[position].newsImage).into(holder.binding.imgNews)
+    }
+
     override fun getItemCount(): Int {
         return listNews.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bind(listNews[position])
-//        Glide.with(holder.itemView).load(listNews[position].newsImage)
-    }
 }

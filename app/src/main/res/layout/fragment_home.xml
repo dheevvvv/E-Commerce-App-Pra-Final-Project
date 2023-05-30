@@ -12,7 +12,6 @@
         android:paddingBottom="100dp"
         android:clipToPadding="false">
 
-        <!-- Scrollable content -->
 
     </androidx.core.widget.NestedScrollView>
 
@@ -33,6 +32,32 @@
         app:layout_anchor="@id/search_bar">
         <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
     </com.google.android.material.search.SearchView>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+
+    <TextView
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/tv_newshome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_pager"
+        style="@style/textjudul"
+        android:text="News" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/rv_listnewshome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_newshome"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -68,4 +68,8 @@
     <string name="order">Order</string>
     <string name="wishlist">Wishlist</string>
     <string name="put_in_cart">Put in Cart</string>
+    <string name="title_news">Judul News</string>
+    <string name="deskripsi_berita">Deskripsi Berita</string>
+    <string name="deskripsi_produk">Deskripsi Produk</string>
+    <string name="title_berita">Judul Berita</string>
 </resources>

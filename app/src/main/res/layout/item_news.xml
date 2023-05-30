@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cardView"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="50dp"
-    app:cardBackgroundColor="@color/white"
-    android:layout_margin="20dp"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    <data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <variable
+            name="news"
+            type="com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/white"
+        card_view:cardCornerRadius="10dp">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_news"
-            android:layout_width="170dp"
-            android:src="@drawable/logo_foreground"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgNews"
+                android:layout_marginRight="10dp"
+                android:src="@{news.newsImage}"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_news"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_news"
-            android:layout_marginStart="20dp"
-            android:text="@string/product_name"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            />
+            <TextView
+                android:id="@+id/tvJudulNews"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@{news.title}"
+                android:textColor="@color/black"
+                android:layout_toRightOf="@id/imgNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvTglNews"
+                android:text="@{news.createdAt}"
+                style="@style/textbody"
+                android:layout_toRightOf="@+id/imgNews"
+                android:layout_below="@+id/tvJudulNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
+        </RelativeLayout>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -8,6 +8,8 @@ import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCart
 import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCartResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.favourite_response.DataFavourite
 import com.pucuk.e_commerce_app_pra_final_project.model.favourite_response.DataFavouriteResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataDetailNewsItem
+import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.transaction_history_response.DataHistoryTransactionResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.transaction_history_response.DataTransactionHistory
 
@@ -18,12 +20,11 @@ interface ApiService {
 
     //Get Sliders
 
-//    //Get News and Detail on Click by Id
-//    @GET("news_update")
-//    fun getNews(): Call<List<DataNewsResponseItem>>
-//    @GET("news_update/{id}?")
-//    fun getDetailNews(@Path("id") id:Int): Call<DataDetailNewsItem>
-
+    //Get News and Detail on Click by Id
+    @GET("news_update")
+    fun getNews(): Call<List<DataNewsResponseItem>>
+    @GET("news_update/{id}?")
+    fun getDetailNews(@Path("id") id:Int): Call<DataDetailNewsItem>
 
     //Get User and All Data User for profile
     @GET("users")
