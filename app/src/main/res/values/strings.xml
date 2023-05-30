@@ -8,12 +8,19 @@
     <string name="english">English</string>
     <string name="indonesian">Indonesian</string>
 
-    <!--  Top App Bar  -->
+    <!--  Custom Detail  -->
     <string name="product">Product</string>
     <string name="product_detail">Product Detail</string>
+    <string name="change_data">Change Data</string>
     <string name="about_us">About Us</string>
+    <string name="give_feedback">Give Feedback</string>
+    <string name="maintenance">Maintenance</string>
+    <string name="logout">Logout</string>
     <string name="help">Help</string>
     <string name="back">Back</string>
+    <string name="dheva">Dheva</string>
+    <string name="Sekar">Sekar</string>
+    <string name="rio">Rio</string>
 
     <!--  Home  -->
     <string name="search_category">Search Category</string>
