@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.ui.KeranjangFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ImageContrastCheck"
+            tools:layout_editor_absoluteX="316dp"
+            tools:layout_editor_absoluteY="10dp" />
+
+        <TextView
+            android:id="@+id/tvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="@string/keranjang_cart"
+            tools:ignore="TextContrastCheck"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="11dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:layout_marginTop="15dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/rvCart"
+        android:layout_marginTop="15dp"
+        android:scrollbars="vertical"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/voucher"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+            
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="10dp"
+                android:elevation="100dp"
+                app:cardBackgroundColor="@color/light_grey"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginStart="5dp"
+                        android:src="@drawable/ic_voucher"
+                        />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/outlinedTextField"
+                        android:layout_width="235dp"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:hint="@string/masukan_kode_vouchers"
+                        app:boxBackgroundColor="@color/white"
+                        android:textColorHint="@color/medium_grey"
+                        android:layout_margin="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEmail_login"
+                            android:textColor="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pakai"
+                        android:backgroundTint="@color/black"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="10dp"
+                android:elevation="100dp"
+                app:cardBackgroundColor="@color/light_grey">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_text_jumlahpesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jumlah_pesanan"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_subtotal_produk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Subtotal (? Produk)"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_text_jumlahpesanan"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Rp. 100.000"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.739"
+                        app:layout_constraintStart_toEndOf="@+id/tv_subtotal_produk"
+                        app:layout_constraintTop_toBottomOf="@id/tv_text_jumlahpesanan" />
+
+                    <TextView
+                        android:id="@+id/tv_text_potongan_voucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Potongan Vouchers"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_subtotal_produk"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="- Rp. 50.000"
+                        android:textColor="@color/red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.739"
+                        app:layout_constraintStart_toEndOf="@+id/tv_text_potongan_voucher"
+                        app:layout_constraintTop_toBottomOf="@id/tv_subtotal_produk" />
+
+                    <TextView
+                        android:id="@+id/tv_text_total_harga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_text_potongan_voucher"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginStart="10dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_termasukppn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="@string/termasuk_ppn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/tv_text_total_harga"
+                        app:layout_constraintTop_toBottomOf="@id/tv_text_potongan_voucher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="Rp. 50.000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.739"
+                        app:layout_constraintStart_toEndOf="@+id/tv_termasukppn"
+                        app:layout_constraintTop_toBottomOf="@id/tv_text_potongan_voucher" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/proses_transaksi"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
