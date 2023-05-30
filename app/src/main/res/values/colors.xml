@@ -7,13 +7,13 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="colorwhite">#FFFFFF</color>
-    <color name="colorblack">#000000</color>#f5f5f5
-    <color name="colorwhite2">#fafafa</color>
-    <color name="medium_grey">#757575</color>
-    <color name="button_grey">#212121</color>
-    <color name="biru">#92DBE5</color>
-    <color name="darkblue">#73C2FB</color>
-    <color name="light_grey">#E6E1E1</color>
-    <color name="red">#D32F2F</color>
+    <color name="cornflower">#92DBE5</color>
+    <color name="brilliant_azure">#30A2FF</color>
+    <color name="capri">#00C4FF</color>
+    <color name="maya_blue">#73C2FB</color>
+    <color name="platinum">#E6E1E1</color>
+    <color name="persian_red">#D32F2F</color>
+    <color name="lotion">#fafafa</color>
+    <color name="sonic_silver">#757575</color>
+    <color name="raisin_black">#212121</color>
 </resources>
