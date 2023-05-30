@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoopeeapplication.Network.ApiService
-import com.pucuk.e_commerce_app_pra_final_project.model.DataUsers
-import com.pucuk.e_commerce_app_pra_final_project.model.DataUsersPostItem
+import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsers
+import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsersPostItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,7 +18,7 @@ class UserViewModel @Inject constructor(private val Client: ApiService): ViewMod
     private var livedataUser : MutableLiveData<List<DataUsersPostItem>> = MutableLiveData()
     val dataPostUser: LiveData<List<DataUsersPostItem>> get() = livedataUser
     fun postUserRegister(email: String, name: String, password: String){
-        //memakai callback yang retrofit
+
         Client.registerUser(DataUsers(email, "",name,password)).enqueue(object : Callback<List<DataUsersPostItem>> {
             override fun onResponse(
                 call: Call<List<DataUsersPostItem>>,

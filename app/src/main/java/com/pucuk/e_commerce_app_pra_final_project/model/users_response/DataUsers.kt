@@ -1,16 +1,12 @@
-package com.pucuk.e_commerce_app_pra_final_project.model
+package com.pucuk.e_commerce_app_pra_final_project.model.users_response
 
 import com.google.gson.annotations.SerializedName
 
-data class DataUsersResponseItem(
-    @SerializedName("createdAt")
-    val createdAt: String,
+data class DataUsers(
     @SerializedName("email")
     val email: String,
-    @SerializedName("id_users")
-    val idUsers: String,
     @SerializedName("image")
-    val image: String,
+    val image: String = "",
     @SerializedName("name")
     val name: String,
     @SerializedName("password")

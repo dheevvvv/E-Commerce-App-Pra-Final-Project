@@ -1,4 +1,4 @@
-package com.pucuk.e_commerce_app_pra_final_project.model
+package com.pucuk.e_commerce_app_pra_final_project.model.users_response
 
 import com.google.gson.annotations.SerializedName
 

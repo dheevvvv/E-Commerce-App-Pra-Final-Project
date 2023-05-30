@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.pucuk.e_commerce_app_pra_final_project.model.DataNewsResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.ItemNewsBinding
-import com.pucuk.e_commerce_app_pra_final_project.model.DataDetailNewsItem
+import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataDetailNewsItem
 
 class NewsAdapter(private val listNews: List<DataNewsResponseItem>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
