@@ -50,7 +50,7 @@ interface ApiService {
     fun postCartUser(
         @Path("userId") userId:Int,
         @Body request: DataCart
-    ) : Call<List<DataCartPostResponse>>
+    ) : Call<List<DataCartResponseItem>>
 
     @DELETE("users/{userId}/cart/{id_cart}")
     fun deleteCartItemUser(
@@ -69,7 +69,7 @@ interface ApiService {
     fun postHistoryTransactionUser(
         @Path("userId") userId:Int,
         @Body request: DataTransactionHistory
-    ) : Call<List<DataTransactionHistoryPostResponse>>
+    ) : Call<List<DataHistoryTransactionResponseItem>>
 
     @DELETE("users/{userId}/transhistory/{id_trans}")
     fun deleteHistoryTransactionItemUser(
@@ -88,7 +88,7 @@ interface ApiService {
     fun postFavouriteProductUser(
         @Path("userId") userId:Int,
         @Body request: DataFavourite
-    ) : Call<List<DataFavouritePostResponse>>
+    ) : Call<List<DataFavouriteResponseItem>>
 
     @DELETE("users/{userId}/favourite/{id_fav}")
     fun deleteFavouriteProductItemUser(
