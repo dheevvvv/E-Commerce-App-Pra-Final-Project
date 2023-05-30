@@ -1,15 +1,15 @@
-package com.pucuk.e_commerce_app_pra_final_project.model
+package com.pucuk.e_commerce_app_pra_final_project.model.favourite_response
 
 
 import com.google.gson.annotations.SerializedName
 
-data class DataCartResponseItem(
+data class DataFavouritePostResponse(
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("id_cart")
-    val idCart: String,
+    @SerializedName("id_fav")
+    val idFav: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("price")

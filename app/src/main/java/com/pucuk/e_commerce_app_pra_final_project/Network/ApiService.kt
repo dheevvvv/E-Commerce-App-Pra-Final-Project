@@ -27,4 +27,9 @@ interface ApiService {
 //    @PUT("users/{id}")
 //    fun updateUser(@Path("id") id : Int, @Body request: DataProfile): Call<PostUserResponse>
 
+
+    //Cart
+    @GET("users/{id}/cart")
+    fun getAllCartUserById()
+
 }

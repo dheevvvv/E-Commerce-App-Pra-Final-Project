@@ -1,25 +1,21 @@
-package com.pucuk.e_commerce_app_pra_final_project.model
+package com.pucuk.e_commerce_app_pra_final_project.model.favourite_response
 
 
 import com.google.gson.annotations.SerializedName
 
-data class DataHistoryTransactionResponseItem(
-    @SerializedName("amount")
-    val amount: Int,
+data class DataFavouriteResponseItem(
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("id_trans")
-    val idTrans: String,
+    @SerializedName("id_fav")
+    val idFav: String,
     @SerializedName("name")
     val name: String,
-    @SerializedName("picture")
-    val picture: String,
     @SerializedName("price")
     val price: Int,
-    @SerializedName("total")
-    val total: Int,
+    @SerializedName("product_image")
+    val productImage: String,
     @SerializedName("userId")
     val userId: String
 )
