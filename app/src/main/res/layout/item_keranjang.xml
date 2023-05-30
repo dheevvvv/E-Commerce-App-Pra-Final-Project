@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_img_product"
             android:layout_marginStart="20dp"
-            android:text="@string/nama_product"
+            android:text="Nama Produk"
             android:textStyle="bold"
             android:textSize="18sp"
             />
@@ -53,7 +53,7 @@
             app:layout_constraintStart_toEndOf="@+id/iv_img_product"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="@string/jumlah"
+            android:text="Jumlah"
             android:textSize="14sp"
             />
         <TextView
