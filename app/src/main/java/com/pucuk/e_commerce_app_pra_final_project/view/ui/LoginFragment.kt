@@ -1,56 +1,101 @@
 package com.pucuk.e_commerce_app_pra_final_project.view.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.shoopeeapplication.view.ARG_PARAM1
-import com.example.shoopeeapplication.view.ARG_PARAM2
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import com.example.shoopeeapplication.Network.ApiClient
+import com.example.shoopeeapplication.model.DataUsersResponseItem
+import com.example.shoopeeapplication.viewmodel.UserViewModel
+import com.pucuk.e_commerce_app_pra_final_project.R
+import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var binding: FragmentLoginBinding
+    private lateinit var userVM: UserViewModel
+    lateinit var sharedPreferenc: SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    ): View {
+
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        userVM = ViewModelProvider(this).get(UserViewModel::class.java)
+
+        sharedPreferenc = requireContext().getSharedPreferences("LOGGED_IN" , Context.MODE_PRIVATE)
+
+        binding.btnLogin.setOnClickListener {
+            val email = binding.etEmailLogin.text.toString()
+            val password = binding.etPasswordLogin.text.toString()
+            auth(email,password)
+        }
+
+        binding.tvToRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+    }
+
+    private fun auth(email: String, password: String) {
+        ApiClient.instance.getAllUser()
+            .enqueue(object : Callback<List<DataUsersResponseItem>> {
+                override fun onResponse(
+                    call: Call<List<DataUsersResponseItem>>,
+                    response: Response<List<DataUsersResponseItem>>,
+                ) {
+                    if (response.isSuccessful){
+                        val resBody = response.body()
+                        if (resBody != null){
+                            Log.d(tag,"RESPONSE : ${resBody.toString()}")
+                            for (i in 0 until resBody.size) {
+                                if(resBody[i].email.equals(email) && resBody[i].password.equals(password)) {
+                                    var addData = sharedPreferenc.edit()
+                                    addData.putString("email", resBody[i].email)
+                                    addData.putString("username",resBody[i].name)
+                                    addData.putString("password",resBody[i].password)
+                                    addData.putString("id",resBody[i].idUsers)
+                                    addData.apply()
+
+                                    binding.etPasswordLogin.error = null
+                                    binding.etEmailLogin.error = null
+
+                                    Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homeFragment)
+                                    Toast.makeText(context, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    // Set error text
+                                    binding.etPasswordLogin.error = "Password Tidak Sesuai"
+                                    binding.etEmailLogin.error ="Email Tidak Sesuai"
+                                    Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    }else{
+                        Toast.makeText(context, "Gagal Load Data", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
+
+                override fun onFailure(call: Call<List<DataUsersResponseItem>>, t: Throwable) {
+                    Toast.makeText(context, "Kesalahan", Toast.LENGTH_SHORT).show()
+                }
+
+            })
     }
 }

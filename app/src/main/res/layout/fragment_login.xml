@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/biru"
     android:padding="30dp"
-    tools:context=".view.LoginFragment"
+    tools:context=".view.ui.LoginFragment"
     tools:ignore="Overdraw">
 
     <androidx.cardview.widget.CardView
@@ -30,7 +30,7 @@
                 android:layout_gravity="center"
                 android:layout_width="134dp"
                 android:layout_height="119dp"
-                android:src="@mipmap/logo_foreground"
+                android:src="@drawable/logo_foreground"
                 tools:ignore="ContentDescription" />
 
             <TextView

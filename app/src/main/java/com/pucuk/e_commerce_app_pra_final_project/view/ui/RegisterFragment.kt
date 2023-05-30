@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoopeeapplication.viewmodel.UserViewModel
+import com.pucuk.e_commerce_app_pra_final_project.R
+import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,7 +48,7 @@ class RegisterFragment : Fragment() {
                 userVM.postUserRegister(username, email, password)
                 Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT)
                     .show()
-                findNavController().navigate(R.id.action_registerFragment2_to_loginFragment2)
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             } else {
                 Toast.makeText(requireContext(), "Password not match", Toast.LENGTH_SHORT).show()
             }
