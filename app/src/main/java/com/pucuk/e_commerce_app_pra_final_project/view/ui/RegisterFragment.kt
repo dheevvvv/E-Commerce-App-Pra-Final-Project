@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.shoopeeapplication.viewmodel.UserViewModel
+import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,10 +33,10 @@ class RegisterFragment : Fragment() {
     }
 
     private fun register() {
-        val username = binding.edtUsernameRegister.text.toString()
-        val email = binding.edtEmailRegister.text.toString()
-        val password = binding.edtPasswordRegister.text.toString()
-        val passwordConfirm = binding.edtUlangiPassword.text.toString()
+        val username = binding.etUsernameRegister.text.toString()
+        val email = binding.etEmailRegister.text.toString()
+        val password = binding.etPasswordRegister.text.toString()
+        val passwordConfirm = binding.etConfirmPasswordRegister.text.toString()
 
 //        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
 //            Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()

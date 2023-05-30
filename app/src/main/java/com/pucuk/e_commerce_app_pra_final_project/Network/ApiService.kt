@@ -1,8 +1,8 @@
 package com.example.shoopeeapplication.Network
 
-import com.example.shoopeeapplication.model.DataUsersPostItem
-import com.example.shoopeeapplication.model.DataUsers
-import com.example.shoopeeapplication.model.DataUsersResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.model.DataUsersPostItem
+import com.pucuk.e_commerce_app_pra_final_project.model.DataUsers
+import com.pucuk.e_commerce_app_pra_final_project.model.DataUsersResponseItem
 import retrofit2.Call
 import retrofit2.http.*
 
