@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.ui.WishlistFragment">
+    tools:context=".view.ui.HistoryTransactionFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,22 +31,19 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:text="@string/wishlist"
+            android:text="Riwayat Transaksi"
             tools:ignore="TextContrastCheck"
             tools:layout_editor_absoluteX="152dp"
             tools:layout_editor_absoluteY="11dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWishlist"
+        android:id="@+id/rvHistoryTransation"
+        tools:listitem="@layout/item_history_transaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         android:layout_marginTop="20dp"
-        tools:listitem="@layout/item_wishlist"
-        >
-
-
-    </androidx.recyclerview.widget.RecyclerView>
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

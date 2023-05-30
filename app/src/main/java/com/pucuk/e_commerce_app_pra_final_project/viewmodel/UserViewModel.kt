@@ -1,11 +1,11 @@
-package com.example.shoopeeapplication.viewmodel
+package com.pucuk.e_commerce_app_pra_final_project.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoopeeapplication.Network.ApiService
-import com.example.shoopeeapplication.model.DataUsers
-import com.example.shoopeeapplication.model.DataUsersPostItem
+import com.pucuk.e_commerce_app_pra_final_project.model.DataUsers
+import com.pucuk.e_commerce_app_pra_final_project.model.DataUsersPostItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback

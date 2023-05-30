@@ -1,4 +1,4 @@
-package com.example.shoopeeapplication.model
+package com.pucuk.e_commerce_app_pra_final_project.model
 
 import com.google.gson.annotations.SerializedName
 
