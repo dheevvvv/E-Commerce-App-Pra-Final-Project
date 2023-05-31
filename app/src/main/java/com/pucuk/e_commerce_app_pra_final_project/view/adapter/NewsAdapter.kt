@@ -20,7 +20,7 @@ class NewsAdapter(private var listNews: List<DataNewsResponseItem>) :
                 val bundle = Bundle().apply {
                     putInt("ID", itemNews.idNews.toString().toInt())
                 }
-                it.findNavController().navigate(R.id.action_homeFragment_to_detailNewsFragment, bundle)
+                it.findNavController().navigate(R.id.action_homeFragment_to_newsFragment, bundle)
             }
         }
     }

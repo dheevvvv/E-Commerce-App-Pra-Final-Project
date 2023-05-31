@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
         <variable
             name="news"
             type="com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem" />
@@ -11,39 +10,44 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:backgroundTint="@color/white"
-        card_view:cardCornerRadius="10dp">
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="50dp"
+        app:cardBackgroundColor="@color/white">
 
         <RelativeLayout
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/imgNews"
-                android:layout_marginRight="10dp"
-                android:src="@{news.newsImage}"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
 
-            <TextView
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgNews"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:src="@{news.newsImage}"
+                android:layout_alignParentStart="true"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvJudulNews"
-                android:textStyle="bold"
-                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/imgNews"
+                android:layout_margin="15dp"
                 android:text="@{news.title}"
-                android:textColor="@color/black"
-                android:layout_toRightOf="@id/imgNews"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvTglNews"
-                android:text="@{news.createdAt}"
-                style="@style/textbody"
-                android:layout_toRightOf="@+id/imgNews"
-                android:layout_below="@+id/tvJudulNews"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/imgNews"
+                android:layout_margin="15dp"
+                android:text="@{news.createdAt}"
+                android:layout_below="@id/tvJudulNews"
+                />
 
         </RelativeLayout>
 

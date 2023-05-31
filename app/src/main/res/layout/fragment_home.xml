@@ -8,22 +8,67 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingBottom="100dp"
         android:clipToPadding="false">
-
-
     </androidx.core.widget.NestedScrollView>
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.search.SearchBar
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/electronic" />
+            android:layout_height="wrap_content"/>
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:iss_auto_cycle="true"
+            app:iss_period="1000"
+            app:iss_delay="1000"
+            app:iss_text_align="CENTER"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/maya_blue"
+            android:layout_marginTop="20dp">
+            <RelativeLayout
+                android:id="@+id/relativTelusuriKateg"
+                android:padding="15dp"
+                android:layout_below="@id/image_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_search_category"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#3D5A80"
+                        android:text="@string/search_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_va_category"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#3D5A80"
+                android:text="@string/view_all"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_product"
+                android:layout_margin="15dp"
+                android:layout_below="@id/tv_search_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_product_category"/>
+        </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <com.google.android.material.search.SearchView
         android:layout_width="match_parent"
@@ -33,30 +78,8 @@
         <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
     </com.google.android.material.search.SearchView>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
 
 
-    <TextView
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        android:id="@+id/tv_newshome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/view_pager"
-        style="@style/textjudul"
-        android:text="News" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:id="@+id/rv_listnewshome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_newshome"/>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

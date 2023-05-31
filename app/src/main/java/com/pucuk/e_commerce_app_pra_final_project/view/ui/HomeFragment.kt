@@ -11,12 +11,13 @@ import com.pucuk.e_commerce_app_pra_final_project.view.adapter.NewsAdapter
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var viewModelHome: HomeViewModel
+    private val imageList = arrayListOf<SlideModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,20 +29,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getNews()
+
+        imageList.add(SlideModel("https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg"))
+        imageList.add(SlideModel("https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg"))
+
+        val sliderLayout = binding.imageSlider
+        sliderLayout.setImageList(imageList)
     }
-
-    fun getNews(){
-        viewModelHome = ViewModelProvider(this).get(HomeViewModel::class.java)
-        viewModelHome.getListNews()
-        viewModelHome.dataNews.observe(viewLifecycleOwner, Observer{
-            binding.rvListnewshome.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-            if (it!= null) {
-                binding.rvListnewshome.adapter = NewsAdapter(it)
-            }
-        })
-    }
-
-
-
 }
