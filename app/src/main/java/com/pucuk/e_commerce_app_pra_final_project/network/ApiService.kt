@@ -1,5 +1,4 @@
-package com.example.shoopeeapplication.Network
-
+package com.pucuk.e_commerce_app_pra_final_project.network
 
 import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsers
 import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsersPostItem

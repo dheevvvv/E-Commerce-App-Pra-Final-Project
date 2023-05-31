@@ -4,9 +4,11 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+
 }
 
 android {
+
     namespace 'com.pucuk.e_commerce_app_pra_final_project'
     compileSdk 33
 
@@ -33,6 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+
     buildFeatures {
         viewBinding true
         dataBinding true
