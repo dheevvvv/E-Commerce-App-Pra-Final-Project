@@ -49,7 +49,7 @@
 
     <TextView
         android:id="@+id/desc"
-        android:text="@string/title_berita"
+        android:text="@string/title_news"
         android:layout_below="@id/cardImgNews"
         android:textColor="@color/brilliant_azure"
         android:layout_centerHorizontal="true"
@@ -84,7 +84,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginTop="35dp"
         android:justificationMode="inter_word"
-        android:text="@string/deskripsi_berita"
+        android:text="@string/news_description"
         android:textColor="@color/black"
         android:textSize="14sp" />
 

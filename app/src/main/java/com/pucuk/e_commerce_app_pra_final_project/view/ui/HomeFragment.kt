@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var viewModelHome: HomeViewModel
@@ -35,5 +35,18 @@ class HomeFragment : Fragment() {
 
         val sliderLayout = binding.imageSlider
         sliderLayout.setImageList(imageList)
+
+        getNews()
+    }
+
+    fun getNews(){
+        viewModelHome = ViewModelProvider(this)[HomeViewModel::class.java]
+        viewModelHome.getListNews()
+        viewModelHome.dataNews.observe(viewLifecycleOwner, Observer{
+            binding.rvProduct.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            if (it!= null) {
+                binding.rvProduct.adapter = NewsAdapter(it)
+            }
+        })
     }
 }
