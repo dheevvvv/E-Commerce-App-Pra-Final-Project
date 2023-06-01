@@ -13,5 +13,6 @@ data class DataNewsResponseItem(
     @SerializedName("news_image")
     val newsImage: String,
     @SerializedName("title")
-    val title: String
+    val title: String,
+    val id: Int
 ): Serializable

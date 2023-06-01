@@ -35,7 +35,7 @@ class NewsFragment : Fragment() {
         getNews()
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_newsFragment_to_homeFragment)
+            findNavController().navigateUp()
         }
     }
 

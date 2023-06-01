@@ -11,18 +11,25 @@ import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentHomeBindin
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.NewsAdapter
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
 import androidx.lifecycle.Observer
+import androidx.lifecycle.get
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pucuk.e_commerce_app_pra_final_project.R
+import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 @AndroidEntryPoint
-class HomeFragment : Fragment()  {
+class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
-    lateinit var viewModelHome: HomeViewModel
+    private lateinit var viewModelHome: HomeViewModel
+    lateinit var userViewModel: UserViewModel
     private val imageList = arrayListOf<SlideModel>()
+
     data class NewsSlideModel(val imageUrl: String, val title: String)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +42,11 @@ class HomeFragment : Fragment()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getNews()
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel.getUserId()
+        userViewModel.userId.observe(viewLifecycleOwner, Observer {
+            val userId = it
+        })
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -50,21 +62,15 @@ class HomeFragment : Fragment()  {
                     findNavController().navigate(R.id.action_homeFragment_to_keranjangFragment)
                     true
                 }
-                R.id.account -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
-                    true
-                }
                 else -> false
             }
         }
     }
 
     fun getNews() {
-        viewModelHome = ViewModelProvider(this)[HomeViewModel::class.java]
+        viewModelHome = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModelHome.getListNews()
         viewModelHome.dataNews.observe(viewLifecycleOwner, Observer { newsList ->
-//            binding.rvProduct.layoutManager =
-//                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             if (newsList != null) {
                 val newsSlideList = newsList.map { news ->
                     NewsSlideModel(news.newsImage, news.title)
@@ -78,17 +84,19 @@ class HomeFragment : Fragment()  {
 
                 binding.imageSlider.setItemClickListener(object : ItemClickListener {
                     override fun doubleClick(position: Int) {
-                        TODO("Not yet implemented")
+                        val selectedNews = newsList[position]
+                        val bundle = bundleOf("ID" to selectedNews.idNews)
+                        findNavController().navigate(R.id.action_homeFragment_to_detailNewsFragment, bundle)
                     }
 
                     override fun onItemSelected(position: Int) {
-                        val selectedNews = newsList[position] // Memperoleh item berita terkait dari posisi saat ini
-                        val bundle = bundleOf("ID" to selectedNews.idNews) // Mengirimkan ID berita ke DetailNewsFragment
+                        val selectedNews = newsList[position]
+                        val bundle = Bundle().apply {
+                            putInt("ID", selectedNews.idNews.toString().toInt())
+                        }
                         findNavController().navigate(R.id.action_homeFragment_to_detailNewsFragment, bundle)
                     }
                 })
-
-//                binding.rvProduct.adapter = NewsAdapter(newsList)
             }
         })
     }
