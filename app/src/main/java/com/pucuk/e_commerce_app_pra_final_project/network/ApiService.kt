@@ -51,7 +51,7 @@ interface ApiService {
     fun getDetailProduct(
         @Path("id") id:Int,
         @Path("id_product") id_product:Int
-    ) : Call<List<DataProductsResponseItem>>
+    ) : Call<DataProductsResponseItem>
 
 
     //Cart

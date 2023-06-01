@@ -19,6 +19,9 @@ class ProductViewModel @Inject constructor (val client: ApiService) : ViewModel(
     private val _product: MutableLiveData<List<DataProductsResponseItem>> = MutableLiveData()
     val product : LiveData<List<DataProductsResponseItem>> get() = _product
 
+    private val _detailProduct: MutableLiveData<DataProductsResponseItem> = MutableLiveData()
+    val detailProduct : LiveData<DataProductsResponseItem> get() = _detailProduct
+
 
     fun callApiGetAllProductByCategory(id_category:Int){
         client.getAllProductsByCategory(id_category)
@@ -42,8 +45,25 @@ class ProductViewModel @Inject constructor (val client: ApiService) : ViewModel(
             })
     }
 
-//    fun getDetailProduct(id_category: Int,id_product:Int){
-//        client.getDetailProduct(id_category,id_product)
-//            .enqueue(object : Callback<DataProductsResponseItem>)
-//    }
+    fun getDetailProduct(id_category: Int,id_product:Int){
+        client.getDetailProduct(id_category,id_product)
+            .enqueue(object : Callback<DataProductsResponseItem>{
+                override fun onResponse(
+                    call: Call<DataProductsResponseItem>,
+                    response: Response<DataProductsResponseItem>
+                ) {
+                    if (response.isSuccessful){
+                        val data = response.body()
+                        _detailProduct.postValue(data!!)
+                    } else{
+                        Log.e("Error : ", "onFailure : ${response.message()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<DataProductsResponseItem>, t: Throwable) {
+                    Log.e("Error : ", "onFailure : ${t.message}")
+                }
+
+            })
+    }
 }
