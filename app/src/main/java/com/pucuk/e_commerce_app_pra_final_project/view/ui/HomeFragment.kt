@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pucuk.e_commerce_app_pra_final_project.R
+import com.pucuk.e_commerce_app_pra_final_project.view.adapter.CategoryProductAdapter
+import com.pucuk.e_commerce_app_pra_final_project.viewmodel.CategoryProductViewModel
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
@@ -25,6 +27,9 @@ class HomeFragment : Fragment()  {
     private lateinit var viewModelHome: HomeViewModel
     lateinit var userViewModel: UserViewModel
     private val imageList = arrayListOf<SlideModel>()
+    private lateinit var categoryProductAdapter: CategoryProductAdapter
+    private lateinit var categoryProductViewModel: CategoryProductViewModel
+
     data class NewsSlideModel(val imageUrl: String, val title: String)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +49,16 @@ class HomeFragment : Fragment()  {
             val userId = it
 
         })
+
+        categoryProductViewModel = ViewModelProvider(this).get(CategoryProductViewModel::class.java)
+        categoryProductViewModel.callApiGetAllCategoryProduct()
+        categoryProductViewModel.categoryProduct.observe(viewLifecycleOwner, Observer {
+            val dataCategoryProduct = it
+            categoryProductAdapter = CategoryProductAdapter(dataCategoryProduct)
+            binding.rvCategoryProduct.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            binding.rvCategoryProduct.adapter = categoryProductAdapter
+        })
+
 
 
 
