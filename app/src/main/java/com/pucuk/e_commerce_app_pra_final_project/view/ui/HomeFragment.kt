@@ -6,20 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentHomeBinding
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.NewsAdapter
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pucuk.e_commerce_app_pra_final_project.R
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment()  {
     lateinit var binding: FragmentHomeBinding
     lateinit var viewModelHome: HomeViewModel
     private val imageList = arrayListOf<SlideModel>()
+    data class NewsSlideModel(val imageUrl: String, val title: String)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,17 +34,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        imageList.add(SlideModel("https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg"))
-        imageList.add(SlideModel("https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg"))
-
-        val sliderLayout = binding.imageSlider
-        sliderLayout.setImageList(imageList)
-
-        binding.tvViewAllNews.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_newsFragment)
-        }
-
         getNews()
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
@@ -67,13 +59,36 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun getNews(){
+    fun getNews() {
         viewModelHome = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModelHome.getListNews()
-        viewModelHome.dataNews.observe(viewLifecycleOwner, Observer{
-            binding.rvNews.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-            if (it!= null) {
-                binding.rvNews.adapter = NewsAdapter(it)
+        viewModelHome.dataNews.observe(viewLifecycleOwner, Observer { newsList ->
+//            binding.rvProduct.layoutManager =
+//                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            if (newsList != null) {
+                val newsSlideList = newsList.map { news ->
+                    NewsSlideModel(news.newsImage, news.title)
+                }
+                for (newsSlide in newsSlideList) {
+                    imageList.add(
+                        SlideModel(newsSlide.imageUrl, newsSlide.title)
+                    )
+                }
+                binding.imageSlider.setImageList(imageList)
+
+                binding.imageSlider.setItemClickListener(object : ItemClickListener {
+                    override fun doubleClick(position: Int) {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onItemSelected(position: Int) {
+                        val selectedNews = newsList[position] // Memperoleh item berita terkait dari posisi saat ini
+                        val bundle = bundleOf("ID" to selectedNews.idNews) // Mengirimkan ID berita ke DetailNewsFragment
+                        findNavController().navigate(R.id.action_homeFragment_to_detailNewsFragment, bundle)
+                    }
+                })
+
+//                binding.rvProduct.adapter = NewsAdapter(newsList)
             }
         })
     }
