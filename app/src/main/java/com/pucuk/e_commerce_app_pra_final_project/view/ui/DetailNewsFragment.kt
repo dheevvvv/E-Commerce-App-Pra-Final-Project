@@ -42,7 +42,7 @@ class DetailNewsFragment : Fragment() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    findNavController().navigate(R.id.action_newsFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_detailNewsFragment_to_homeFragment)
                     true
                 }
                 R.id.favorite -> {

@@ -5,13 +5,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="20dp"
-    app:cardElevation="50dp"
-    app:cardBackgroundColor="@color/white">
+    app:cardElevation="20dp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_margin="20dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="15dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_img_product"
