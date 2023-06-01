@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment()  {
     lateinit var binding: FragmentHomeBinding
-    lateinit var viewModelHome: HomeViewModel
+    private lateinit var viewModelHome: HomeViewModel
     lateinit var userViewModel: UserViewModel
     private val imageList = arrayListOf<SlideModel>()
     data class NewsSlideModel(val imageUrl: String, val title: String)

@@ -101,8 +101,11 @@
             android:id="@+id/action_keranjangFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
         <action
-            android:id="@+id/action_keranjangFragment_to_homeFragment2"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_keranjangFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_keranjangFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
@@ -159,6 +162,12 @@
         <action
             android:id="@+id/action_favoriteFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_keranjangFragment"
+            app:destination="@id/keranjangFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
@@ -171,6 +180,21 @@
         <action
             android:id="@+id/action_accountFragment_to_feedBackFragment"
             app:destination="@id/feedBackFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_keranjangFragment"
+            app:destination="@id/keranjangFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/feedBackFragment"

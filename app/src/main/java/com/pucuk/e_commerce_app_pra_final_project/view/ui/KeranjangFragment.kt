@@ -19,7 +19,7 @@ import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 
 
 class KeranjangFragment : Fragment() {
-    private lateinit var binding:FragmentKeranjangBinding
+    private lateinit var binding: FragmentKeranjangBinding
     private lateinit var cartViewModel: CartViewModel
     private lateinit var cartAdapter: CartAdapter
 //    private lateinit var userViewModel: UserViewModel
@@ -36,28 +36,28 @@ class KeranjangFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
 
-//        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-//            when (item.itemId) {
-//                R.id.home -> {
-//                    findNavController().navigate(R.id.action_newsFragment_to_homeFragment)
-//                    true
-//                }
-//                R.id.favorite -> {
-//                    findNavController().navigate(R.id.action_newsFragment_to_favoriteFragment)
-//                    true
-//                }
-//                R.id.cart -> {
-//                    findNavController().navigate(R.id.action_newsFragment_to_keranjangFragment)
-//                    true
-//                }
-//                R.id.account -> {
-//                    findNavController().navigate(R.id.action_newsFragment_to_accountFragment)
-//                    true
-//                }
-//
-//                else -> false
-//            }
-//        }
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    findNavController().navigate(R.id.action_keranjangFragment_to_homeFragment)
+                    true
+                }
+                R.id.news -> {
+                    findNavController().navigate(R.id.action_keranjangFragment_to_newsFragment)
+                    true
+                }
+                R.id.favorite -> {
+                    findNavController().navigate(R.id.action_keranjangFragment_to_favoriteFragment)
+                    true
+                }
+                R.id.account -> {
+                    findNavController().navigate(R.id.action_keranjangFragment_to_accountFragment)
+                    true
+                }
+
+                else -> false
+            }
+        }
 
 
 
