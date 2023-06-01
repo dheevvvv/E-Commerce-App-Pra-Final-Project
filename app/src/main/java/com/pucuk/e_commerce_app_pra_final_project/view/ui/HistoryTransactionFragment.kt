@@ -13,6 +13,7 @@ import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentHistoryTransactionBinding
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.HistoryTransactionAdapter
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HistoryTransactionViewModel
+import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 
 
 class HistoryTransactionFragment : Fragment() {
@@ -20,6 +21,8 @@ class HistoryTransactionFragment : Fragment() {
     private lateinit var binding: FragmentHistoryTransactionBinding
     private lateinit var historyTransactionViewModel: HistoryTransactionViewModel
     private lateinit var historyTransactionAdapter: HistoryTransactionAdapter
+    private lateinit var userViewModel: UserViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,15 +36,20 @@ class HistoryTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         historyTransactionViewModel = ViewModelProvider(this).get(HistoryTransactionViewModel::class.java)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        historyTransactionViewModel.callApiHistoryTrans(2)
-        historyTransactionViewModel.historyTrans.observe(viewLifecycleOwner, Observer {
-            if (it!= null){
-                historyTransactionAdapter = HistoryTransactionAdapter(it)
-                binding.rvHistoryTransation.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                binding.rvHistoryTransation.adapter = historyTransactionAdapter
-            }
+        userViewModel.getUserId()
+        userViewModel.userId.observe(viewLifecycleOwner, Observer {
+            historyTransactionViewModel.callApiHistoryTrans(it)
+            historyTransactionViewModel.historyTrans.observe(viewLifecycleOwner, Observer {
+                if (it!= null){
+                    historyTransactionAdapter = HistoryTransactionAdapter(it)
+                    binding.rvHistoryTransation.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    binding.rvHistoryTransation.adapter = historyTransactionAdapter
+                }
+            })
         })
+
     }
 
 

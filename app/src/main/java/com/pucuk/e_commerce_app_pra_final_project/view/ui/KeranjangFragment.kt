@@ -22,6 +22,7 @@ class KeranjangFragment : Fragment() {
     private lateinit var binding: FragmentKeranjangBinding
     private lateinit var cartViewModel: CartViewModel
     private lateinit var cartAdapter: CartAdapter
+    private lateinit var userViewModel: UserViewModel
 //    private lateinit var userViewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +62,7 @@ class KeranjangFragment : Fragment() {
 
 
 
-//        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 //
 //        userViewModel.userId.observe(viewLifecycleOwner, Observer {
 ////            cartViewModel.callApiCart(it)
@@ -76,16 +77,20 @@ class KeranjangFragment : Fragment() {
 ////            })
 //        })
 
-        cartViewModel.callApiCart(2)
-        cartViewModel.cart.observe(viewLifecycleOwner, Observer {
-            val cartItems = it
-            cartAdapter = CartAdapter(cartItems, requireContext(), {position, quantity ->
-                cartAdapter.notifyDataSetChanged()
-                calculateTotalPrice(quantity)
+        userViewModel.getUserId()
+        userViewModel.userId.observe(viewLifecycleOwner, Observer {
+            cartViewModel.callApiCart(it)
+            cartViewModel.cart.observe(viewLifecycleOwner, Observer {
+                val cartItems = it
+                cartAdapter = CartAdapter(cartItems, requireContext(), {position, quantity ->
+                    calculateTotalPrice(quantity)
+                })
+                binding.rvCart.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                binding.rvCart.adapter = cartAdapter
             })
-            binding.rvCart.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            binding.rvCart.adapter = cartAdapter
         })
+
+
         
     }
 
