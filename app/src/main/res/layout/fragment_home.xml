@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_product"
+                    android:id="@+id/rv_category_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_search_category"
