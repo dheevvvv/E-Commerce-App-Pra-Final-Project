@@ -37,7 +37,7 @@
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCategoryItemCart"
+            android:id="@+id/tvPriceProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tvNamaProduct"
@@ -51,17 +51,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/buy_now"
-            app:layout_constraintStart_toStartOf="@+id/tvCategoryItemCart"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategoryItemCart"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/brilliant_azure"
+            app:layout_constraintStart_toStartOf="@+id/tvPriceProduct"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriceProduct"
             android:layout_marginTop="10dp" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_favorite_product"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_favourite_false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_favourite_true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
