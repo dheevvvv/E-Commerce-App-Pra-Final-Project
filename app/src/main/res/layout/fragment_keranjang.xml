@@ -34,18 +34,11 @@
             />
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCart"
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:layout_marginTop="15dp"
-        />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/rvCart"
         android:layout_marginTop="15dp"
         android:scrollbars="vertical"
         android:orientation="vertical">
@@ -53,8 +46,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -76,7 +78,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:layout_width="30dp"
@@ -88,7 +91,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/outlinedTextField"
-                        android:layout_width="235dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:hint="@string/input_voucher_code"
@@ -97,16 +100,17 @@
                         android:layout_margin="10dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etEmail_login"
+                            android:id="@+id/etVoucherCode"
                             android:textColor="@color/white"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.button.MaterialButton
+                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
                         android:text="@string/use"
                         android:backgroundTint="@color/brilliant_azure"/>
 
@@ -117,7 +121,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp"
                 android:layout_margin="10dp"
                 android:elevation="100dp"
@@ -126,7 +130,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="10dp">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_text_jumlahpesanan"
@@ -141,7 +145,7 @@
                         app:layout_constraintStart_toStartOf="parent"/>
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_subtotal_produk"
+                        android:id="@+id/tv_text_subtotal_produk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/subtotal_product"
@@ -152,13 +156,14 @@
                         />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_subtotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="Rp. 100.000"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.739"
-                        app:layout_constraintStart_toEndOf="@+id/tv_subtotal_produk"
+                        app:layout_constraintStart_toEndOf="@+id/tv_text_subtotal_produk"
                         app:layout_constraintTop_toBottomOf="@id/tv_text_jumlahpesanan" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -167,12 +172,13 @@
                         android:layout_height="wrap_content"
                         android:text="@string/voucher_discount"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_subtotal_produk"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_text_subtotal_produk"
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="10dp"
                         />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_discount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -181,7 +187,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.739"
                         app:layout_constraintStart_toEndOf="@+id/tv_text_potongan_voucher"
-                        app:layout_constraintTop_toBottomOf="@id/tv_subtotal_produk" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_text_subtotal_produk" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_text_total_harga"
@@ -208,6 +214,7 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_text_potongan_voucher" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTotalPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
@@ -226,13 +233,14 @@
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnProcessTransaction"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/transaction_process"
+                android:layout_marginBottom="80dp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/brilliant_azure"
                 />
         </LinearLayout>
-
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
