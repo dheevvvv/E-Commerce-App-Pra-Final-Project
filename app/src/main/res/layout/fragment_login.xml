@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maya_blue"
+    android:background="@color/platinum"
     android:padding="30dp"
     tools:context=".view.ui.LoginFragment"
     tools:ignore="Overdraw">
@@ -87,8 +87,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/maya_blue"
+                android:backgroundTint="@color/platinum"
                 android:text="@string/login"
+                android:textColor="@color/black"
                 tools:ignore="DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck,HardcodedText,VisualLintButtonSize" />
 
             <com.google.android.material.textview.MaterialTextView

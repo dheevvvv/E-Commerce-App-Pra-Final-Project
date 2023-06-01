@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentDetailNewsBinding
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
@@ -28,6 +31,7 @@ class DetailNewsFragment : Fragment() {
     ): View {
         binding = FragmentDetailNewsBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -38,6 +42,10 @@ class DetailNewsFragment : Fragment() {
         if (id != null) {
             viewModel.getNewsById(id)
             observeDetailNews()
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 
@@ -51,7 +59,7 @@ class DetailNewsFragment : Fragment() {
                         .load("${it.newsImage}")
                         .into(binding.imgNews)
 
-                    binding.txtDescNews.text = """Overview:
+                    binding.txtDescNews.text = """Description:
                         |
                     """.trimMargin() + it.content.toString()
                 }

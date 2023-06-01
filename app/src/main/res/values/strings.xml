@@ -76,7 +76,7 @@
     <string name="view_all">View All</string>
     <string name="wishlist" translatable="false">Wishlist</string>
     <string name="put_in_cart">Put in Cart</string>
-    <string name="title_news">Title News</string>
+    <string name="title_news">News</string>
     <string name="news_description">Description News</string>
 
 </resources>

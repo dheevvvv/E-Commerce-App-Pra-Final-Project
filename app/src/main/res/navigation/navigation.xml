@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailNewsFragment"
             app:destination="@id/detailNewsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -89,5 +92,18 @@
     <fragment
         android:id="@+id/detailNewsFragment"
         android:name="com.pucuk.e_commerce_app_pra_final_project.view.ui.DetailNewsFragment"
-        android:label="DetailNewsFragment" />
+        android:label="DetailNewsFragment" >
+        <action
+            android:id="@+id/action_detailNewsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.pucuk.e_commerce_app_pra_final_project.view.ui.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_newsFragment_to_detailNewsFragment"
+            app:destination="@id/detailNewsFragment" />
+    </fragment>
 </navigation>
