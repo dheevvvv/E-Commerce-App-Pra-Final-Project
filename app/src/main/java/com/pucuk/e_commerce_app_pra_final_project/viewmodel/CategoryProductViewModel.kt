@@ -1,0 +1,44 @@
+package com.pucuk.e_commerce_app_pra_final_project.viewmodel
+
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCartResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.model.category_product_response.DataCategoryProductResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.network.ApiService
+import dagger.hilt.android.lifecycle.HiltViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import javax.inject.Inject
+
+@HiltViewModel
+class CategoryProductViewModel @Inject constructor (val client:ApiService):ViewModel() {
+    private val _categoryProduct: MutableLiveData<List<DataCategoryProductResponseItem>> = MutableLiveData()
+    val categoryProduct : LiveData<List<DataCategoryProductResponseItem>> get() = _categoryProduct
+
+    fun callApiGetAllCategoryProduct(){
+        client.getAllCategory().enqueue(object : Callback<List<DataCategoryProductResponseItem>>{
+            override fun onResponse(
+                call: Call<List<DataCategoryProductResponseItem>>,
+                response: Response<List<DataCategoryProductResponseItem>>
+            ) {
+                if (response.isSuccessful){
+                    val data = response.body()
+                    _categoryProduct.postValue(data!!)
+                } else{
+                    Log.e("Error : ", "onFailure : ${response.message()}")
+                }
+            }
+
+            override fun onFailure(
+                call: Call<List<DataCategoryProductResponseItem>>,
+                t: Throwable
+            ) {
+                Log.e("Error : ", "onFailure : ${t.message}")
+            }
+
+        })
+    }
+}

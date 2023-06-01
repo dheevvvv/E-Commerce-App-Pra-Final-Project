@@ -237,10 +237,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/transaction_process"
-                android:layout_marginBottom="80dp"
+                android:layout_marginBottom="160dp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/brilliant_azure"
                 />
+
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_gravity="bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -77,6 +77,8 @@
     <string name="wishlist" translatable="false">Wishlist</string>
     <string name="put_in_cart">Put in Cart</string>
     <string name="title_news">News</string>
+    <string name="message">Message</string>
+    <string name="add_to_favorite">Add to Favorite</string>
     <string name="news_description">Description News</string>
 
 </resources>

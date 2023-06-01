@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="50dp"
     app:cardBackgroundColor="@color/white">
@@ -23,7 +22,7 @@
             />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvNamaProduct"
+            android:id="@+id/tvNamaCategoryProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_img_product"
@@ -32,16 +31,7 @@
             android:textSize="18sp"
             android:layout_centerHorizontal="true"
             />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvHargaProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvNamaProduct"
-            android:text="Rp. 100.000"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_centerHorizontal="true"
-            />
+
 
     </RelativeLayout>
 

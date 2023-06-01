@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentDetailNewsBinding
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
@@ -35,6 +37,8 @@ class DetailNewsFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         val id = arguments?.getInt("ID")
