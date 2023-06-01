@@ -9,7 +9,7 @@ import com.pucuk.e_commerce_app_pra_final_project.databinding.ItemKeranjangBindi
 import com.pucuk.e_commerce_app_pra_final_project.model.transaction_history_response.DataHistoryTransactionResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.view.ui.HistoryTransactionFragment
 
-class HistoryTransactionAdapter(private val listHistoryTransaction: List<DataHistoryTransactionResponseItem>)
+class HistoryTransactionAdapter(private var listHistoryTransaction: List<DataHistoryTransactionResponseItem>)
     :RecyclerView.Adapter<HistoryTransactionAdapter.ViewHolder>() {
 
     class ViewHolder(var binding:ItemHistoryTransactionBinding):RecyclerView.ViewHolder(binding.root) {
@@ -25,10 +25,12 @@ class HistoryTransactionAdapter(private val listHistoryTransaction: List<DataHis
         return listHistoryTransaction.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int){
         val historyTransactionItem = listHistoryTransaction[position]
         Glide.with(holder.itemView).load(historyTransactionItem.picture).into(holder.binding.ivImgProduct)
+        holder.binding.tvDateTransactionHistory.text = historyTransactionItem.createdAt
         holder.binding.tvNamaProduct.text = historyTransactionItem.name
-        holder.binding.tvHargaCartproduk.setText(historyTransactionItem.price)
+        holder.binding.tvJumlahProduk.text = historyTransactionItem.amount.toString()
+        holder.binding.tvTotalHargaProduk.text = historyTransactionItem.total.toString()
     }
 }
