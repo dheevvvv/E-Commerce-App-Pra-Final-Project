@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pucuk.e_commerce_app_pra_final_project.R
@@ -51,6 +52,13 @@ class ProductFragment : Fragment() {
                 productAdapter = ProductAdapter(it)
                 binding.rvProduct.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 binding.rvProduct.adapter = productAdapter
+                productAdapter.onClick = {
+                    val bundle = Bundle()
+                    bundle.putInt("idCategory", dataCategoryId)
+                    bundle.putInt("idProduct", it.idProduct.toInt())
+                    bundle.putString("namaCategory", dataCategoryNama)
+                    findNavController().navigate(R.id.action_productFragment_to_detailProductFragment, bundle)
+                }
             }
         })
     }
