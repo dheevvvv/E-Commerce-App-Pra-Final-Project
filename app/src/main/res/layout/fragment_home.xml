@@ -21,68 +21,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
+        <RelativeLayout
+            android:id="@+id/slider_layout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:iss_auto_cycle="true"
-            app:iss_period="1000"
-            app:iss_delay="1000"
-            app:iss_text_align="CENTER"/>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/platinum"
-            app:cardCornerRadius="20dp"
-            android:layout_margin="15dp">
+            android:layout_height="200dp">
 
-            <RelativeLayout
-                android:id="@+id/telusuriNews"
-                android:padding="15dp"
-                android:layout_below="@id/image_slider"
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/titleNews"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="#3D5A80"
-                    android:text="@string/title_news"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvViewAllNews"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="#3D5A80"
-                    android:text="@string/view_all"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_news"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@id/titleNews"
-                    tools:listitem="@layout/item_news" />
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="match_parent"
+                app:iss_auto_cycle="true"
+                app:iss_period="1000"
+                app:iss_delay="1000"
+                app:iss_text_align="CENTER"/>
+        </RelativeLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/platinum"
-            app:cardCornerRadius="20dp"
-            android:layout_margin="15dp">
-
+            android:backgroundTint="@color/maya_blue"
+            android:layout_marginTop="20dp">
             <RelativeLayout
                 android:id="@+id/relativTelusuriKateg"
                 android:padding="15dp"
-                android:layout_below="@id/telusuriNews"
+                android:layout_below="@id/image_slider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                     <com.google.android.material.textview.MaterialTextView
@@ -93,7 +55,6 @@
                         android:text="@string/search_category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_va_category"
                 android:textSize="20sp"
@@ -114,23 +75,17 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     tools:listitem="@layout/item_product_category" />
-        </RelativeLayout>
+
+                <com.google.android.material.search.SearchView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/electronic">
+                    <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
+                </com.google.android.material.search.SearchView>
+            </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
-    <com.google.android.material.search.SearchView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="@string/electronic"
-        app:layout_anchor="@id/search_bar">
-        <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
-    </com.google.android.material.search.SearchView>
-
-
-
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
