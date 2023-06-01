@@ -43,6 +43,28 @@ class HomeFragment : Fragment() {
         }
 
         getNews()
+
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.news -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_newsFragment)
+                    true
+                }
+                R.id.favorite -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_wishlistFragment)
+                    true
+                }
+                R.id.cart -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_keranjangFragment)
+                    true
+                }
+                R.id.account -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun getNews(){

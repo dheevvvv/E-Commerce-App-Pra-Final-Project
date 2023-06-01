@@ -10,6 +10,7 @@ import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentNewsBinding
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.MainNewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +35,7 @@ class NewsFragment : Fragment() {
         getNews()
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.action_newsFragment_to_homeFragment)
         }
     }
 
