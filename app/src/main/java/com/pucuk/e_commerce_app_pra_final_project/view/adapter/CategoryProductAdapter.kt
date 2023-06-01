@@ -12,6 +12,8 @@ import com.pucuk.e_commerce_app_pra_final_project.model.transaction_history_resp
 class CategoryProductAdapter (private var listCategoryProduct: List<DataCategoryProductResponseItem>)
     : RecyclerView.Adapter<CategoryProductAdapter.ViewHolder>() {
 
+    var onClick: ((DataCategoryProductResponseItem)->Unit)? = null
+
     class ViewHolder(var binding: ItemProductCategoryBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -29,6 +31,10 @@ class CategoryProductAdapter (private var listCategoryProduct: List<DataCategory
         val categoryProductItem = listCategoryProduct[position]
         Glide.with(holder.itemView).load(categoryProductItem.image).into(holder.binding.ivImgProduct)
         holder.binding.tvNamaCategoryProduct.text = categoryProductItem.name
+//        holder.binding.tvNamaCategoryProduct.text =
+        holder.binding.KlikCategory.setOnClickListener {
+            onClick!!.invoke(categoryProductItem)
+        }
 
     }
 }

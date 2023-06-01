@@ -41,6 +41,9 @@ interface ApiService {
     @GET("/category_product")
     fun getAllCategory(): Call<List<DataCategoryProductResponseItem>>
 
+    @GET("/category_product")
+    fun getCategory(): Call<DataCategoryProductResponseItem>
+
     //products
     @GET("/category_product/{id}/products")
     fun getAllProductsByCategory(

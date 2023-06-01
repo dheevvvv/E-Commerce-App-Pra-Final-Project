@@ -15,8 +15,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryProductViewModel @Inject constructor (val client:ApiService):ViewModel() {
-    private val _categoryProduct: MutableLiveData<List<DataCategoryProductResponseItem>> = MutableLiveData()
-    val categoryProduct : LiveData<List<DataCategoryProductResponseItem>> get() = _categoryProduct
+    private val _allCategoryProduct: MutableLiveData<List<DataCategoryProductResponseItem>> = MutableLiveData()
+    val allCategoryProduct : LiveData<List<DataCategoryProductResponseItem>> get() = _allCategoryProduct
+
+    private val _categoryProduct: MutableLiveData<DataCategoryProductResponseItem> = MutableLiveData()
+    val categoryProduct : LiveData<DataCategoryProductResponseItem> get() = _categoryProduct
 
     fun callApiGetAllCategoryProduct(){
         client.getAllCategory().enqueue(object : Callback<List<DataCategoryProductResponseItem>>{
@@ -26,7 +29,7 @@ class CategoryProductViewModel @Inject constructor (val client:ApiService):ViewM
             ) {
                 if (response.isSuccessful){
                     val data = response.body()
-                    _categoryProduct.postValue(data!!)
+                    _allCategoryProduct.postValue(data!!)
                 } else{
                     Log.e("Error : ", "onFailure : ${response.message()}")
                 }
@@ -36,6 +39,27 @@ class CategoryProductViewModel @Inject constructor (val client:ApiService):ViewM
                 call: Call<List<DataCategoryProductResponseItem>>,
                 t: Throwable
             ) {
+                Log.e("Error : ", "onFailure : ${t.message}")
+            }
+
+        })
+    }
+
+    fun getCategoryProduct(){
+        client.getCategory().enqueue(object : Callback<DataCategoryProductResponseItem>{
+            override fun onResponse(
+                call: Call<DataCategoryProductResponseItem>,
+                response: Response<DataCategoryProductResponseItem>
+            ) {
+                if (response.isSuccessful){
+                    val data = response.body()
+                    _categoryProduct.postValue(data!!)
+                } else{
+                    Log.e("Error : ", "onFailure : ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<DataCategoryProductResponseItem>, t: Throwable) {
                 Log.e("Error : ", "onFailure : ${t.message}")
             }
 

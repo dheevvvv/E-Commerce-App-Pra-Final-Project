@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentHomeBinding
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.NewsAdapter
@@ -54,11 +55,47 @@ class HomeFragment : Fragment() {
 
         categoryProductViewModel = ViewModelProvider(this).get(CategoryProductViewModel::class.java)
         categoryProductViewModel.callApiGetAllCategoryProduct()
-        categoryProductViewModel.categoryProduct.observe(viewLifecycleOwner, Observer {
+        categoryProductViewModel.allCategoryProduct.observe(viewLifecycleOwner, Observer {
             categoryProductAdapter = CategoryProductAdapter(it)
             binding.rvCategoryProduct.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             binding.rvCategoryProduct.adapter = categoryProductAdapter
+            categoryProductAdapter.onClick = {category ->
+                        val categoryId = category.id
+                        val namaCategory = category.name
+                        val bundle = Bundle()
+                        bundle.putInt("categoryId", categoryId.toInt() )
+                        bundle.putString("namaCategory", namaCategory)
+
+                        findNavController().navigate(R.id.action_homeFragment_to_productFragment, bundle)
+                    }
+
+//            categoryProductViewModel.getCategoryProduct()
+//            categoryProductViewModel.categoryProduct.observe(viewLifecycleOwner, Observer {category ->
+//                if (category!= null){
+//                    categoryProductAdapter.onClick = {
+//                        val categoryId = category.id
+//                        val namaCategory = category.name
+//                        val bundle = Bundle()
+//                        bundle.putInt("categoryId", categoryId.toInt() )
+//                        bundle.putString("namaCategory", namaCategory)
+//
+//                        findNavController().navigate(R.id.action_homeFragment_to_productFragment, bundle)
+//                    }
+//                } else{
+//                    Toast.makeText(context, "null", Toast.LENGTH_SHORT).show()
+//                }
+//            })
         })
+
+
+//        categoryProductViewModel.callApiGetAllCategoryProduct()
+//        categoryProductViewModel.categoryProduct.observe(viewLifecycleOwner, Observer {DataCategory ->
+//            categoryProductAdapter = CategoryProductAdapter(DataCategory)
+//            if (DataCategory!= null){
+//                binding.rvCategoryProduct.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//                binding.rvCategoryProduct.adapter = categoryProductAdapter
+//            }
+//        })
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
