@@ -3,6 +3,7 @@ package com.pucuk.e_commerce_app_pra_final_project.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCartResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataDetailNewsItem
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.network.ApiService
@@ -14,9 +15,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val Client: ApiService): ViewModel() {
-
     private var livedataNews :MutableLiveData<List<DataNewsResponseItem>> = MutableLiveData()
     val dataNews: LiveData<List<DataNewsResponseItem>> get() = livedataNews
+
+    private var livedataCart: MutableLiveData<List<DataCartResponseItem>> = MutableLiveData()
+    val dataCart: LiveData<List<DataCartResponseItem>> get() = livedataCart
+
     fun getListNews(){
         Client.getNews().enqueue(object : Callback<List<DataNewsResponseItem>> {
             override fun onResponse(
@@ -59,6 +63,4 @@ class HomeViewModel @Inject constructor(private val Client: ApiService): ViewMod
 
         })
     }
-
-
 }
