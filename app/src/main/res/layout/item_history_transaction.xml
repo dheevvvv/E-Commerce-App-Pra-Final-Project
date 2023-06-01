@@ -46,7 +46,7 @@
                     app:layout_constraintStart_toEndOf="@+id/ivCheck"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/tvDateTransactionHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvCategoryItemCart" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvTextJumlahProduk"
+                    android:id="@+id/tvJumlahProduk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -126,11 +126,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toEndOf="@+id/tvTextJumlahProduk"
+                    app:layout_constraintStart_toEndOf="@+id/tvJumlahProduk"
                     app:layout_constraintTop_toBottomOf="@id/tvCategoryItemCart" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvHargaCartproduk"
+                    android:id="@+id/tvTotalHargaProduk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
