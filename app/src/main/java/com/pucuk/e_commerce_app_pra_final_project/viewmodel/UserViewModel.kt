@@ -2,16 +2,14 @@ package com.pucuk.e_commerce_app_pra_final_project.viewmodel
 
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.pucuk.e_commerce_app_pra_final_project.datastore_prefs.UserManager
 import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsers
 import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsersPostItem
 import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsersResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,6 +31,9 @@ class UserViewModel @Inject constructor(val Client: ApiService, val userManager:
     private val _userId = MutableLiveData<Int>()
     val userId: LiveData<Int> = _userId
 
+
+    val isLoggedIn = userManager.isLoggedIn()
+        .asLiveData(Dispatchers.Main)
 
     fun callGetApiAllUser(){
         Client.getAllUser().enqueue(object : Callback<List<DataUsersResponseItem>>{

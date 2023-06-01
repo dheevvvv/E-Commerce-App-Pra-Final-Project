@@ -19,10 +19,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pucuk.e_commerce_app_pra_final_project.R
+import com.pucuk.e_commerce_app_pra_final_project.datastore_prefs.UserManager
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.CategoryProductAdapter
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.CategoryProductViewModel
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -46,6 +50,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         getNews()
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.getUserId()
@@ -108,7 +113,13 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.cart -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_keranjangFragment)
+                        userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                            if (it){
+                                findNavController().navigate(R.id.action_homeFragment_to_keranjangFragment)
+                            } else{
+                                findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+                            }
+                        })
                     true
                 }
                 R.id.account -> {
