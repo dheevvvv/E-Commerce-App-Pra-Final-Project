@@ -51,20 +51,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/buy_now"
+            app:layout_constraintStart_toStartOf="@+id/tvCategoryItemCart"
             app:layout_constraintTop_toBottomOf="@+id/tvCategoryItemCart"
-            app:layout_constraintStart_toStartOf="@+id/tvCategoryItemCart"
             android:layout_marginTop="10dp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFavorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_to_favorite"
-            app:layout_constraintTop_toBottomOf="@+id/btnOrder"
-            app:layout_constraintStart_toStartOf="@+id/tvCategoryItemCart"
-            android:layout_marginTop="10dp" />
-
-
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_favorite_product"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_favourite_false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
