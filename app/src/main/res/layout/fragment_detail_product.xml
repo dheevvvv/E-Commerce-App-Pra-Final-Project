@@ -50,6 +50,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btnFavor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favourite_false"
+            android:layout_margin="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_name"
@@ -92,11 +102,11 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_message"
+                android:id="@+id/btn_order"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="@string/message"
+                android:text="@string/buy_now"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/brilliant_azure"
                 />

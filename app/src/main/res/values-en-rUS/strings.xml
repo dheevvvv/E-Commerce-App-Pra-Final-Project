@@ -51,5 +51,6 @@
     <string name="put_in_cart">Masukkan dalam Keranjang</string>
     <string name="title_news">Judul Berita</string>
     <string name="message">Pesan</string>
+    <string name="add_to_favorite">Tambahkan ke Favorite</string>
     <string name="news_description">Deskripsi Berita</string>
 </resources>
