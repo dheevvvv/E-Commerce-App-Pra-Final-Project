@@ -24,9 +24,9 @@
                 android:layout_margin="20dp"/>
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvNamaTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/product_detail"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_margin="20dp"/>

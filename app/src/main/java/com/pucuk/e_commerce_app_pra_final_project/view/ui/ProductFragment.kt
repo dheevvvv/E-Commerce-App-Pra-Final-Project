@@ -1,5 +1,6 @@
 package com.pucuk.e_commerce_app_pra_final_project.view.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,18 +35,21 @@ class ProductFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val dataCategoryId = arguments?.getInt("categoryId")
-        val dataCategoryNama = arguments?.getString("categoryNama")
+        val dataCategoryNama = arguments?.getString("namaCategory")
+
+        binding.tvNamaTop.text = "Produk Category" + "  " + dataCategoryNama
 
         productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
         productViewModel.callApiGetAllProductByCategory(dataCategoryId!!)
         productViewModel.product.observe(viewLifecycleOwner, Observer {
             if (it!= null){
                 productAdapter = ProductAdapter(it)
-                binding.rvProduct.layoutManager = GridLayoutManager(context, 3)
+                binding.rvProduct.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 binding.rvProduct.adapter = productAdapter
             }
         })

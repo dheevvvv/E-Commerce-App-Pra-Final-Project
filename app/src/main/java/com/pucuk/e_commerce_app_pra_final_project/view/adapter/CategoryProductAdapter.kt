@@ -31,7 +31,6 @@ class CategoryProductAdapter (private var listCategoryProduct: List<DataCategory
         val categoryProductItem = listCategoryProduct[position]
         Glide.with(holder.itemView).load(categoryProductItem.image).into(holder.binding.ivImgProduct)
         holder.binding.tvNamaCategoryProduct.text = categoryProductItem.name
-//        holder.binding.tvNamaCategoryProduct.text =
         holder.binding.KlikCategory.setOnClickListener {
             onClick!!.invoke(categoryProductItem)
         }

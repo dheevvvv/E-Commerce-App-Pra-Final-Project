@@ -12,6 +12,7 @@ import com.pucuk.e_commerce_app_pra_final_project.model.product_response.DataPro
 class ProductAdapter (private var listProduct: List<DataProductsResponseItem>)
     : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
+    var onClick: ((DataProductsResponseItem)->Unit)? = null
     class ViewHolder(var binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -30,6 +31,9 @@ class ProductAdapter (private var listProduct: List<DataProductsResponseItem>)
         Glide.with(holder.itemView).load(productItem.productImage).into(holder.binding.ivImgProduct)
         holder.binding.tvNamaProduct.text = productItem.name
         holder.binding.tvPriceProduct.text = productItem.price
+        holder.binding.ivImgProduct.setOnClickListener{
+            onClick!!.invoke(productItem)
+        }
 
     }
 }
