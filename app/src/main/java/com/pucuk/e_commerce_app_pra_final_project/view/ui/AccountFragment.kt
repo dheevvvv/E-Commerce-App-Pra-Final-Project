@@ -34,6 +34,18 @@ class AccountFragment : Fragment() {
 //            it
 //        })
 
+        binding.apply {
+            btnAboutUs.setOnClickListener {
+                findNavController().navigate(R.id.action_accountFragment_to_aboutUsFragment)
+            }
+            btnGiveFeedback.setOnClickListener {
+                findNavController().navigate(R.id.action_accountFragment_to_feedBackFragment)
+            }
+            btnLogout.setOnClickListener {
+                findNavController().navigate(R.id.action_accountFragment_to_loginFragment)
+            }
+        }
+
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
