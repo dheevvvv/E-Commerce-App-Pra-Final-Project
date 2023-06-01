@@ -1,4 +1,4 @@
-package com.example.shoopeeapplication.Network
+package com.pucuk.e_commerce_app_pra_final_project.network
 
 import dagger.Module
 import dagger.Provides

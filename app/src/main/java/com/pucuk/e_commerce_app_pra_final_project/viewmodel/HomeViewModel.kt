@@ -3,9 +3,9 @@ package com.pucuk.e_commerce_app_pra_final_project.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.shoopeeapplication.Network.ApiService
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataDetailNewsItem
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
