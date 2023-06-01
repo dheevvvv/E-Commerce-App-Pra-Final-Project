@@ -5,6 +5,7 @@ import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsers
 import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsersResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCart
 import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCartResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.model.category_product_response.DataCategoryProductResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.favourite_response.DataFavourite
 import com.pucuk.e_commerce_app_pra_final_project.model.favourite_response.DataFavouriteResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataDetailNewsItem
@@ -34,6 +35,10 @@ interface ApiService {
 
 //    @PUT("users/{id}")
 //    fun updateUser(@Path("id") id : Int, @Body request: DataProfile): Call<PostUserResponse>
+
+    //products
+    @GET("/category_product")
+    fun getAllCategory(): Call<List<DataCategoryProductResponseItem>>
 
 
     //Cart
