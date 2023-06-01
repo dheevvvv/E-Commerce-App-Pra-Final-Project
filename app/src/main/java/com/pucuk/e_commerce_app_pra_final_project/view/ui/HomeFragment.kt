@@ -8,13 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentHomeBinding
-import com.pucuk.e_commerce_app_pra_final_project.view.adapter.NewsAdapter
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
 import androidx.lifecycle.Observer
-import androidx.lifecycle.get
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pucuk.e_commerce_app_pra_final_project.R
