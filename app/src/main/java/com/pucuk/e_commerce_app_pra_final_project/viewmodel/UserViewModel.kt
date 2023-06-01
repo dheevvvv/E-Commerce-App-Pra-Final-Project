@@ -2,6 +2,7 @@ package com.pucuk.e_commerce_app_pra_final_project.viewmodel
 
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.*
 import com.pucuk.e_commerce_app_pra_final_project.datastore_prefs.UserManager
 import com.pucuk.e_commerce_app_pra_final_project.model.users_response.DataUsers
@@ -24,6 +25,9 @@ class UserViewModel @Inject constructor(val Client: ApiService, val userManager:
 
     private val _users: MutableLiveData<List<DataUsersResponseItem>> = MutableLiveData()
     val users : LiveData<List<DataUsersResponseItem>> get() = _users
+
+    private val _detailUsers: MutableLiveData<DataUsersResponseItem> = MutableLiveData()
+    val detailUsers : LiveData<DataUsersResponseItem> get() = _detailUsers
 
     private val _dataLoginUser: MutableLiveData<DataUsersResponseItem?> = MutableLiveData()
     val dataLoginUser: LiveData<DataUsersResponseItem?> get() = _dataLoginUser
@@ -53,6 +57,27 @@ class UserViewModel @Inject constructor(val Client: ApiService, val userManager:
             @SuppressLint("NullSafeMutableLiveData")
             override fun onFailure(call: Call<List<DataUsersResponseItem>>, t: Throwable) {
                 _users.postValue(null)
+            }
+
+        })
+    }
+
+    fun getDetailUsers(userId:Int){
+        Client.getDetailUser().enqueue(object : Callback<DataUsersResponseItem>{
+            override fun onResponse(
+                call: Call<DataUsersResponseItem>,
+                response: Response<DataUsersResponseItem>
+            ) {
+                if (response.isSuccessful){
+                    val data = response.body()
+                    _detailUsers.postValue(data!!)
+                }else{
+                    Log.e("Error : ", "onFailure : ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<DataUsersResponseItem>, t: Throwable) {
+                Log.e("Error : ", "onFailure : ${t.message}")
             }
 
         })

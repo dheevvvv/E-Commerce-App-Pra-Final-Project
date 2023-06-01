@@ -31,6 +31,9 @@ interface ApiService {
     @GET("users")
     fun getAllUser(): Call<List<DataUsersResponseItem>>
 
+    @GET("users")
+    fun getDetailUser(): Call<DataUsersResponseItem>
+
     @POST("users")
     fun registerUser(@Body request: DataUsers): Call<List<DataUsersPostItem>>
 
