@@ -50,5 +50,6 @@
     <string name="view_all">Lihat Semua</string>
     <string name="put_in_cart">Masukkan dalam Keranjang</string>
     <string name="title_news">Judul Berita</string>
+    <string name="message">Pesan</string>
     <string name="news_description">Deskripsi Berita</string>
 </resources>

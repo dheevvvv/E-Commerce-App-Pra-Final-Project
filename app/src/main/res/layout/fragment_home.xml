@@ -55,15 +55,6 @@
                         android:text="@string/search_category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_va_category"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#3D5A80"
-                android:text="@string/view_all"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_category_product"
