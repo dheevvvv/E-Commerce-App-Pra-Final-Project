@@ -1,5 +1,7 @@
 package com.pucuk.e_commerce_app_pra_final_project.network
 
+import android.app.Application
+import com.pucuk.e_commerce_app_pra_final_project.datastore_prefs.UserManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,5 +24,11 @@ object ApiClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         retrofit.create(ApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserManager(application: Application): UserManager {
+        return UserManager.getInstance(application)
     }
 }

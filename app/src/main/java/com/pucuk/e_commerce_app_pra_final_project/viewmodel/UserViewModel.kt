@@ -1,5 +1,6 @@
 package com.pucuk.e_commerce_app_pra_final_project.viewmodel
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +18,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel @Inject constructor(private val Client: ApiService, val userManager: UserManager): ViewModel() {
+class UserViewModel @Inject constructor(val Client: ApiService, val userManager: UserManager ): ViewModel() {
 
     private var livedataUser : MutableLiveData<List<DataUsersPostItem>> = MutableLiveData()
     val dataPostUser: LiveData<List<DataUsersPostItem>> get() = livedataUser
