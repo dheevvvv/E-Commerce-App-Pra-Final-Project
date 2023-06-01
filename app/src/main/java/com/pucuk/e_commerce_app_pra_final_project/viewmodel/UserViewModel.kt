@@ -1,6 +1,7 @@
 package com.pucuk.e_commerce_app_pra_final_project.viewmodel
 
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,11 +24,38 @@ class UserViewModel @Inject constructor(val Client: ApiService, val userManager:
     private var livedataUser : MutableLiveData<List<DataUsersPostItem>> = MutableLiveData()
     val dataPostUser: LiveData<List<DataUsersPostItem>> get() = livedataUser
 
+    private val _users: MutableLiveData<List<DataUsersResponseItem>> = MutableLiveData()
+    val users : LiveData<List<DataUsersResponseItem>> get() = _users
+
     private val _dataLoginUser: MutableLiveData<DataUsersResponseItem?> = MutableLiveData()
     val dataLoginUser: LiveData<DataUsersResponseItem?> get() = _dataLoginUser
 
     private val _userId = MutableLiveData<Int>()
     val userId: LiveData<Int> = _userId
+
+
+    fun callGetApiAllUser(){
+        Client.getAllUser().enqueue(object : Callback<List<DataUsersResponseItem>>{
+            @SuppressLint("NullSafeMutableLiveData")
+            override fun onResponse(
+                call: Call<List<DataUsersResponseItem>>,
+                response: Response<List<DataUsersResponseItem>>
+            ) {
+                if (response.isSuccessful){
+                    val data = response.body()
+                    _users.postValue(data!!)
+                }else{
+                    _users.postValue(null)
+                }
+            }
+
+            @SuppressLint("NullSafeMutableLiveData")
+            override fun onFailure(call: Call<List<DataUsersResponseItem>>, t: Throwable) {
+                _users.postValue(null)
+            }
+
+        })
+    }
 
     fun loginUser(email: String, password: String) {
         Client.getAllUser().enqueue(object : Callback<List<DataUsersResponseItem>> {

@@ -37,6 +37,9 @@ class DetailNewsFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         val id = arguments?.getInt("ID")
         if (id != null) {

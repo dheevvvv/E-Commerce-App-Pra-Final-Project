@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentKeranjangBinding
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.CartAdapter
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.CartViewModel
@@ -33,6 +35,32 @@ class KeranjangFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
+
+//        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.home -> {
+//                    findNavController().navigate(R.id.action_newsFragment_to_homeFragment)
+//                    true
+//                }
+//                R.id.favorite -> {
+//                    findNavController().navigate(R.id.action_newsFragment_to_favoriteFragment)
+//                    true
+//                }
+//                R.id.cart -> {
+//                    findNavController().navigate(R.id.action_newsFragment_to_keranjangFragment)
+//                    true
+//                }
+//                R.id.account -> {
+//                    findNavController().navigate(R.id.action_newsFragment_to_accountFragment)
+//                    true
+//                }
+//
+//                else -> false
+//            }
+//        }
+
+
+
 //        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 //
 //        userViewModel.userId.observe(viewLifecycleOwner, Observer {
