@@ -38,14 +38,18 @@ class NewsFragment : Fragment() {
         }
     }
 
-    fun getNews(){
+    fun getNews() {
         viewModelHome = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModelHome.getListNews()
-        viewModelHome.dataNews.observe(viewLifecycleOwner, Observer{
-            binding.rvMainNews.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-            if (it!= null) {
-                binding.rvMainNews.adapter = MainNewsAdapter(it)
+        viewModelHome.dataNews.observe(viewLifecycleOwner, Observer { newsList ->
+            if (newsList != null) {
+                binding.rvMainNews.apply {
+                    layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    adapter = MainNewsAdapter(newsList)
+                    isNestedScrollingEnabled = false // Disable nested scrolling if using NestedScrollView
+                }
             }
         })
     }
+
 }
