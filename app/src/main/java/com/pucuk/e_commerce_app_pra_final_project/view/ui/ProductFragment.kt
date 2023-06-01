@@ -10,7 +10,7 @@ import com.pucuk.e_commerce_app_pra_final_project.R
 
 
 class ProductFragment : Fragment() {
-
+    
 
 
 

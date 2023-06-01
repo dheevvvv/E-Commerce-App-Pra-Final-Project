@@ -39,6 +39,28 @@ class DetailNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    findNavController().navigate(R.id.action_newsFragment_to_homeFragment)
+                    true
+                }
+                R.id.favorite -> {
+                    findNavController().navigate(R.id.action_newsFragment_to_favoriteFragment)
+                    true
+                }
+                R.id.cart -> {
+                    findNavController().navigate(R.id.action_newsFragment_to_keranjangFragment)
+                    true
+                }
+                R.id.account -> {
+                    findNavController().navigate(R.id.action_newsFragment_to_accountFragment)
+                    true
+                }
+
+                else -> false
+            }
+        }
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         val id = arguments?.getInt("ID")

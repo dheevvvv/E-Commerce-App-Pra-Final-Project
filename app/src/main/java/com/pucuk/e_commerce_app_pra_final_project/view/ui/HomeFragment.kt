@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pucuk.e_commerce_app_pra_final_project.R
+import com.pucuk.e_commerce_app_pra_final_project.view.adapter.CategoryProductAdapter
+import com.pucuk.e_commerce_app_pra_final_project.viewmodel.CategoryProductViewModel
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +28,8 @@ class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     private lateinit var viewModelHome: HomeViewModel
     lateinit var userViewModel: UserViewModel
+    private lateinit var categoryProductViewModel: CategoryProductViewModel
+    private lateinit var categoryProductAdapter: CategoryProductAdapter
     private val imageList = arrayListOf<SlideModel>()
 
     data class NewsSlideModel(val imageUrl: String, val title: String)
@@ -48,6 +52,14 @@ class HomeFragment : Fragment() {
             val userId = it
         })
 
+        categoryProductViewModel = ViewModelProvider(this).get(CategoryProductViewModel::class.java)
+        categoryProductViewModel.callApiGetAllCategoryProduct()
+        categoryProductViewModel.categoryProduct.observe(viewLifecycleOwner, Observer {
+            categoryProductAdapter = CategoryProductAdapter(it)
+            binding.rvCategoryProduct.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            binding.rvCategoryProduct.adapter = categoryProductAdapter
+        })
+
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.news -> {
@@ -60,6 +72,10 @@ class HomeFragment : Fragment() {
                 }
                 R.id.cart -> {
                     findNavController().navigate(R.id.action_homeFragment_to_keranjangFragment)
+                    true
+                }
+                R.id.account -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
                     true
                 }
                 else -> false
