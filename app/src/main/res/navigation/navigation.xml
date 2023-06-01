@@ -53,8 +53,8 @@
             android:id="@+id/action_homeFragment_to_keranjangFragment"
             app:destination="@id/keranjangFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
+            android:id="@+id/action_homeFragment_to_detailNewsFragment"
+            app:destination="@id/detailNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -85,14 +85,6 @@
         <action
             android:id="@+id/action_keranjangFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.pucuk.e_commerce_app_pra_final_project.view.ui.NewsFragment"
-        android:label="NewsFragment" >
-        <action
-            android:id="@+id/action_newsFragment_to_detailNewsFragment"
-            app:destination="@id/detailNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
