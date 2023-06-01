@@ -58,9 +58,7 @@ class KeranjangFragment : Fragment() {
             binding.rvCart.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.rvCart.adapter = cartAdapter
         })
-
-
-
+        
     }
 
     private fun calculateTotalPrice(quantity: Int) {
