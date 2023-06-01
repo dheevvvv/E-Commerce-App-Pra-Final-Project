@@ -46,15 +46,15 @@ class DetailNewsFragment : Fragment() {
                     true
                 }
                 R.id.favorite -> {
-                    findNavController().navigate(R.id.action_newsFragment_to_favoriteFragment)
+                    findNavController().navigate(R.id.action_detailNewsFragment_to_favoriteFragment)
                     true
                 }
                 R.id.cart -> {
-                    findNavController().navigate(R.id.action_newsFragment_to_keranjangFragment)
+                    findNavController().navigate(R.id.action_detailNewsFragment_to_keranjangFragment)
                     true
                 }
                 R.id.account -> {
-                    findNavController().navigate(R.id.action_newsFragment_to_accountFragment)
+                    findNavController().navigate(R.id.action_detailNewsFragment_to_accountFragment)
                     true
                 }
 
