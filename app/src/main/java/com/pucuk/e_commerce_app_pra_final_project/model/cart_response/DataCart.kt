@@ -4,5 +4,5 @@ data class DataCart(
     val name: String,
     val product_image:String,
     val price:String,
-    val description:String
+    val description:String,
 )

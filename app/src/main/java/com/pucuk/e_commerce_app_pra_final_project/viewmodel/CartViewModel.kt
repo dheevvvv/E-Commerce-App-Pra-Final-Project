@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoopeeapplication.Network.ApiClient
 import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCart
-import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCartPostResponse
 import com.pucuk.e_commerce_app_pra_final_project.model.cart_response.DataCartResponseItem
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,6 +44,7 @@ class CartViewModel:ViewModel() {
                       userId:Int,
                       product_image:String,
                       price:String,
+                      amount:Int,
                       description:String){
         ApiClient.instance.postCartUser(userId, DataCart(name, product_image, price, description))
             .enqueue(object : Callback<List<DataCartResponseItem>>{

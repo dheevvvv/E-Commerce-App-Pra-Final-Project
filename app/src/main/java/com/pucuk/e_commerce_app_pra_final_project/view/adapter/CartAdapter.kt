@@ -1,5 +1,6 @@
 package com.pucuk.e_commerce_app_pra_final_project.view.adapter
 
+//noinspection SuspiciousImport
 import android.R
 import android.annotation.SuppressLint
 import android.content.Context
@@ -35,17 +36,24 @@ class CartAdapter(private val listCart:List<DataCartResponseItem>,
         val cartItem = listCart[position]
         Glide.with(holder.itemView).load(cartItem.productImage).into(holder.binding.ivImgProduct)
         holder.binding.tvNamaProduct.text = cartItem.name
-        holder.binding.tvHargaCartproduk.text = cartItem.price
+        holder.binding.tvHargaCartproduk.setText(cartItem.price)
 
         // Set up spinner for quantity
         val quantities = (1..10).toList()
         val adapter = ArrayAdapter(context, R.layout.simple_spinner_item, quantities)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         holder.binding.spJumlahProduk.adapter = adapter
 
-// Set selected quantity from cart item
-        val selectedQuantityIndex = 1
-        holder.binding.spJumlahProduk.setSelection(selectedQuantityIndex)
+//// Set selected quantity from cart item
+//        val selectedQuantityIndex = 1
+//        holder.binding.spJumlahProduk.setSelection(selectedQuantityIndex)
+
+//        // Set selected quantity from cart item
+//        val currentQuantity = cartItem.amount.toIntOrNull()
+//        if (currentQuantity != null && currentQuantity in quantities) {
+//            val selectedQuantityIndex = quantities.indexOf(currentQuantity)
+//            holder.binding.spJumlahProduk.setSelection(selectedQuantityIndex)
+//        } else{Toast.makeText(context, "null", Toast.LENGTH_SHORT).show()}
 
 // Handle quantity changes
         holder.binding.spJumlahProduk.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
