@@ -10,6 +10,7 @@ import com.pucuk.e_commerce_app_pra_final_project.model.favourite_response.DataF
 import com.pucuk.e_commerce_app_pra_final_project.model.favourite_response.DataFavouriteResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataDetailNewsItem
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
+import com.pucuk.e_commerce_app_pra_final_project.model.product_response.DataProductsResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.transaction_history_response.DataHistoryTransactionResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.model.transaction_history_response.DataTransactionHistory
 
@@ -36,10 +37,22 @@ interface ApiService {
 //    @PUT("users/{id}")
 //    fun updateUser(@Path("id") id : Int, @Body request: DataProfile): Call<PostUserResponse>
 
-    //products
+    //category product
     @GET("/category_product")
     fun getAllCategory(): Call<List<DataCategoryProductResponseItem>>
 
+    //products
+    @GET("/category_product/{id}/products")
+    fun getAllProductsByCategory(
+        @Path("id") id:Int
+    ) : Call<List<DataProductsResponseItem>>
+
+    @GET("/category_product/{id}/products/{id_product}")
+    fun getDetailProduct(
+        @Path("id") id:Int,
+        @Path("id_product") id_product:Int
+    ) : Call<List<DataProductsResponseItem>>
+    
 
     //Cart
     @GET("users/{userId}/cart")
