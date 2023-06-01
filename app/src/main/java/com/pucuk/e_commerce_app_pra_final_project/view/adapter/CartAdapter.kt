@@ -58,8 +58,8 @@ class CartAdapter(private val listCart:List<DataCartResponseItem>,
 // Handle quantity changes
         holder.binding.spJumlahProduk.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                val newQuantity = quantities[pos]
-                onQuantityChanged.invoke(position, newQuantity)
+                val selectedQuantity = quantities[pos]
+                onQuantityChanged.invoke(position, selectedQuantity)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
