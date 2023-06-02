@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentNewsBinding
 import com.pucuk.e_commerce_app_pra_final_project.view.adapter.MainNewsAdapter
+import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewsFragment : Fragment() {
     lateinit var binding: FragmentNewsBinding
     lateinit var viewModelHome: HomeViewModel
+    lateinit var userViewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,12 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel.getUserId()
+        userViewModel.userId.observe(viewLifecycleOwner, Observer {
+            val userId = it
+        })
+
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
@@ -39,15 +47,33 @@ class NewsFragment : Fragment() {
                     true
                 }
                 R.id.favorite -> {
-                    findNavController().navigate(R.id.action_newsFragment_to_favoriteFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_newsFragment_to_favoriteFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_newsFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
                 R.id.cart -> {
-                    findNavController().navigate(R.id.action_newsFragment_to_keranjangFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_newsFragment_to_keranjangFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_newsFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
                 R.id.account -> {
-                    findNavController().navigate(R.id.action_newsFragment_to_accountFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_newsFragment_to_accountFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_newsFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
 

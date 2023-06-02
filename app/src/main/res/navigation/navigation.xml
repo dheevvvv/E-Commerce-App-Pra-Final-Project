@@ -109,6 +109,9 @@
         <action
             android:id="@+id/action_keranjangFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_keranjangFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
@@ -126,6 +129,12 @@
         <action
             android:id="@+id/action_detailNewsFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_detailNewsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_detailNewsFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -153,6 +162,9 @@
         <action
             android:id="@+id/action_newsFragment_to_keranjangFragment"
             app:destination="@id/keranjangFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -180,6 +192,9 @@
         <action
             android:id="@+id/action_favoriteFragment_to_keranjangFragment"
             app:destination="@id/keranjangFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"

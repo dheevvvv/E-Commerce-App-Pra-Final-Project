@@ -46,9 +46,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/platinum"
+            android:backgroundTint="@color/maya_blue"
             app:cardCornerRadius="20dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginBottom="15dp">

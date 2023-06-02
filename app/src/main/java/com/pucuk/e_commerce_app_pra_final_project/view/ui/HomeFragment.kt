@@ -109,7 +109,13 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.favorite -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_wishlistFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
                 R.id.cart -> {
@@ -123,7 +129,13 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.account -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
                 else -> false

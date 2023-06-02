@@ -13,9 +13,11 @@ import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private lateinit var userVM: UserViewModel
     private lateinit var binding: FragmentRegisterBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +32,7 @@ class RegisterFragment : Fragment() {
         binding.btnRegister.setOnClickListener {
             register()
         }
+
     }
 
     private fun register() {
@@ -39,15 +42,14 @@ class RegisterFragment : Fragment() {
         val passwordConfirm = binding.etConfirmPasswordRegister.text.toString()
 
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
-            Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT).show()
         } else {
             if (password == passwordConfirm) {
                 userVM.postUserRegister(username, email, password)
-                Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT)
-                    .show()
-                findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+                Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             } else {
-                Toast.makeText(requireContext(), "Password not match", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Password does not match", Toast.LENGTH_SHORT).show()
             }
         }
     }

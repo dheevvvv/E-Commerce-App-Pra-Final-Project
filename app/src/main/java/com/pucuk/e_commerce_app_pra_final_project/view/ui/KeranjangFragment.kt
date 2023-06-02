@@ -37,22 +37,40 @@ class KeranjangFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
 
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel.getUserId()
+        userViewModel.userId.observe(viewLifecycleOwner, Observer {
+            val userId = it
+        })
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.home -> {
-                    findNavController().navigate(R.id.action_keranjangFragment_to_homeFragment)
-                    true
-                }
                 R.id.news -> {
                     findNavController().navigate(R.id.action_keranjangFragment_to_newsFragment)
                     true
                 }
-                R.id.favorite -> {
-                    findNavController().navigate(R.id.action_keranjangFragment_to_favoriteFragment)
+                R.id.home -> {
+                    findNavController().navigate(R.id.action_keranjangFragment_to_homeFragment)
                     true
                 }
+                R.id.favorite -> {
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_keranjangFragment_to_favoriteFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_keranjangFragment_to_loginFragment)
+                        }
+                    })
+                    true
+                }
+
                 R.id.account -> {
-                    findNavController().navigate(R.id.action_keranjangFragment_to_accountFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_keranjangFragment_to_accountFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_keranjangFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
 

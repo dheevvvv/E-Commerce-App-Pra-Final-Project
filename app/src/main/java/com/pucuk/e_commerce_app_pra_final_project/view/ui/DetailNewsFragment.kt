@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import com.pucuk.e_commerce_app_pra_final_project.R
 import com.pucuk.e_commerce_app_pra_final_project.databinding.FragmentDetailNewsBinding
 import com.pucuk.e_commerce_app_pra_final_project.model.news_response.DataNewsResponseItem
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.HomeViewModel
+import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
@@ -23,6 +25,7 @@ class DetailNewsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailNewsBinding
     private lateinit var viewModel: HomeViewModel
+    lateinit var userViewModel: UserViewModel
     private lateinit var selectedNews: DataNewsResponseItem
     private var isFavorite by Delegates.notNull<Boolean>()
     override fun onCreateView(
@@ -38,6 +41,11 @@ class DetailNewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel.getUserId()
+        userViewModel.userId.observe(viewLifecycleOwner, Observer {
+            val userId = it
+        })
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -46,15 +54,37 @@ class DetailNewsFragment : Fragment() {
                     true
                 }
                 R.id.favorite -> {
-                    findNavController().navigate(R.id.action_detailNewsFragment_to_favoriteFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_detailNewsFragment_to_favoriteFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_detailNewsFragment_to_loginFragment)
+                        }
+                    })
+                    true
+                }
+                R.id.news -> {
+                    findNavController().navigate(R.id.action_detailNewsFragment_to_newsFragment)
                     true
                 }
                 R.id.cart -> {
-                    findNavController().navigate(R.id.action_detailNewsFragment_to_keranjangFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_detailNewsFragment_to_keranjangFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_detailNewsFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
                 R.id.account -> {
-                    findNavController().navigate(R.id.action_detailNewsFragment_to_accountFragment)
+                    userViewModel.isLoggedIn.observe(viewLifecycleOwner, Observer {
+                        if (it){
+                            findNavController().navigate(R.id.action_detailNewsFragment_to_accountFragment)
+                        } else{
+                            findNavController().navigate(R.id.action_detailNewsFragment_to_loginFragment)
+                        }
+                    })
                     true
                 }
 

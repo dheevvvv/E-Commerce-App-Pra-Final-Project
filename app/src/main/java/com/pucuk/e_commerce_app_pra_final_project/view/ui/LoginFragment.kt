@@ -15,7 +15,7 @@ import com.pucuk.e_commerce_app_pra_final_project.datastore_prefs.UserManager
 import com.pucuk.e_commerce_app_pra_final_project.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -33,13 +33,15 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.tvToRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
         userVM = ViewModelProvider(this).get(UserViewModel::class.java)
         userManager = UserManager.getInstance(requireContext())
         binding.btnLogin.setOnClickListener {
             login()
         }
-
-
     }
 
     private fun login() {
@@ -47,23 +49,20 @@ class LoginFragment : Fragment() {
         val password = binding.etPasswordLogin.text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
-            // Observasi LiveData dataLoginUser
+            Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT).show()
+        } else {
             userVM.dataLoginUser.observe(viewLifecycleOwner, Observer { dataLoginUser ->
                 if (dataLoginUser != null) {
-                    // Respons berhasil
                     val userId = dataLoginUser.idUsers.toInt()
-                    GlobalScope.async {
+                    GlobalScope.launch {
                         userManager.saveData(userId, true)
                     }
                     Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 } else {
-                    // Respons gagal atau null
                     Toast.makeText(requireContext(), "Login Failed", Toast.LENGTH_SHORT).show()
                 }
             })
-            Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT).show()
-        } else {
             userVM.loginUser(email, password)
         }
     }
