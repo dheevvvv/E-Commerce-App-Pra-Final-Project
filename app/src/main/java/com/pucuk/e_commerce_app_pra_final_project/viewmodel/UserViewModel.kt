@@ -82,6 +82,7 @@ class UserViewModel @Inject constructor(val Client: ApiService, val userManager:
         })
     }
 
+
     fun loginUser(email: String, password: String) {
         Client.getAllUser().enqueue(object : Callback<List<DataUsersResponseItem>> {
             override fun onResponse(

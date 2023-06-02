@@ -34,6 +34,11 @@ interface ApiService {
     @GET("users")
     fun getDetailUser(): Call<DataUsersResponseItem>
 
+    @GET("users/{id}")
+    fun getUserItem(
+        @Path("id") id:String
+    ):Call<DataUsersResponseItem>
+
     @POST("users")
     fun registerUser(@Body request: DataUsers): Call<List<DataUsersPostItem>>
 

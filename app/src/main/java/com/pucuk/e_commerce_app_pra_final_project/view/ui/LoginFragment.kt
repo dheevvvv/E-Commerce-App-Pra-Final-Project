@@ -51,6 +51,7 @@ class LoginFragment : Fragment() {
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(requireContext(), "Please fill all the fields", Toast.LENGTH_SHORT).show()
         } else {
+            userVM.loginUser(email, password)
             userVM.dataLoginUser.observe(viewLifecycleOwner, Observer { dataLoginUser ->
                 if (dataLoginUser != null) {
                     val userId = dataLoginUser.idUsers.toInt()
@@ -63,7 +64,6 @@ class LoginFragment : Fragment() {
                     Toast.makeText(requireContext(), "Login Failed", Toast.LENGTH_SHORT).show()
                 }
             })
-            userVM.loginUser(email, password)
         }
     }
 }
